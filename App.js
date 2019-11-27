@@ -12,8 +12,4 @@ ReactDOM.render(
   <MainPage/>
 , document.getElementById('container') );
 
-let fetchData = async () => {
-  let data = await fetch('http://localhost:3000/users');
-  console.log(data);
-}
-fetchData();
+
