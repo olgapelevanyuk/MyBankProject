@@ -37,3 +37,11 @@
     margin-left: 20px;
     color: rgba(27,39,51,.5);
 }
+.connection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.networks a {
+    margin-left: 30px;
+}
