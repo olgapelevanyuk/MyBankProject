@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import '../App.css'
+//import '../App.css'
 
 import Page_Start from './pages/Page_Start';
 import Page_Products from './pages/Page_Products';
@@ -15,12 +15,12 @@ class PagesRouter extends React.Component {
   
       return (
         <div className='Route'>
-          <Route path="/" exact component={Page_Start} />
-          <Route path="/depos" component={Page_Products} />
+          {/*<Route path="/" exact component={Page_Start} />
+           <Route path="/depos" component={Page_Products} />
           <Route path="/kred" component={Page_Registration} />
           <Route path="/kard" component={Page_Basket} />
           <Route path="/" component={Page_Start} />
-          <Route path="/products" component={Page_Products} />
+      <Route path="/products" component={Page_Products} />*/}
           <Route path="/registration" component={Page_Registration} />
         </div>
       );
