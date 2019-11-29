@@ -1,0 +1,17 @@
+.footer {
+    background-color: #ebedf1;
+}
+.phoneBlock {
+    display: flex;
+}
+.phone-image {
+    width: 64px;
+}
+.phone-number {
+    font-size: 42px;
+}
+.phone-type {
+    font-size: 14px;
+    color: rgba(27,39,51,.4);
+    white-space: pre-line;
+}
