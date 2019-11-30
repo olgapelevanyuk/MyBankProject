@@ -2,6 +2,67 @@
   "users": [
     {
       "id": 1
+    },
+    {
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "surname": "fdbdfb",
+      "firstName": "dfbdb",
+      "lastName": "dfbdfb",
+      "eMail": "dfbdfb@ewfwfe.wefwef",
+      "phone": "+375292856565",
+      "password": "123456",
+      "login": "wef",
+      "type": "user",
+      "id": 4
+    },
+    {
+      "surname": "Иванов",
+      "firstName": "Кузьма",
+      "lastName": "Михайлович",
+      "eMail": "qqq@qqq.qq",
+      "phone": "+375291234567",
+      "password": "admin",
+      "login": "admin",
+      "type": "admin",
+      "id": 5
+    },
+    {
+      "surname": "RTHRHT",
+      "firstName": "RTHRTH",
+      "lastName": "RTHRTH",
+      "eMail": "RTH@FREG.ERG",
+      "phone": "+375291111111",
+      "password": "123456",
+      "login": "ERRETERT",
+      "type": "admin",
+      "id": 6
+    },
+    {
+      "surname": "ERG",
+      "firstName": "ERGERG",
+      "lastName": "ERGERG",
+      "eMail": "REGERG@REGE.ERGERG",
+      "phone": "+375295454545",
+      "password": "456789",
+      "login": "ERGERG",
+      "type": "user",
+      "id": 7
+    },
+    {
+      "surname": "ertert",
+      "firstName": "eterte",
+      "lastName": "ertert",
+      "eMail": "ertet@ferg.ergerg",
+      "phone": "+375295858585",
+      "password": "456789",
+      "login": "ertert",
+      "type": "user",
+      "id": 8
     }
   ],
   "applications": []

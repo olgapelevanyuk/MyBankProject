@@ -29,6 +29,7 @@ class PagesLinks extends React.Component {
 
         <NavLink to="/registration" className={"showMenu"} activeClassName="ActivePageLink">{true? "Администратору" :
          Оператору}</NavLink>
+         <NavLink to="/applications">Заявки</NavLink>
         
       </div>
     );

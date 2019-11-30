@@ -1,7 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {deleteData, postData, patchData, getData} from '../utils/utils';
-import { USERS_LOADING, USERS_LOADED } from '../constants/actionTypes';
+import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser } from '../constants/actionTypes';
+import { NavLink } from 'react-router-dom';
+
 class Page_Registration extends React.PureComponent {
 
     async componentDidMount(){
@@ -52,7 +54,7 @@ class Page_Registration extends React.PureComponent {
       newState.errorMessage = '';
     }
     this.setState({...this.state,
-      surname: newState});
+      firstName: newState});
 }
 
 validateLastName = e => {
@@ -65,7 +67,7 @@ validateLastName = e => {
       newState.errorMessage = '';
     }
     this.setState({...this.state,
-      surname: newState});
+      lastName: newState});
 }
 
 validateEMail = e => {
@@ -132,7 +134,7 @@ validateLogin = e => {
     const value = e.target.value.trim();
     const {users} = this.props;
     const newState = {value: value};
-    const loginIsValid = users.some(user => value === user.login);
+    const loginIsValid = users.list.every(user => value !== user.login);
     if(!loginIsValid) {
         newState.errorMessage = 'Логин занят другим пользователем';
     }
@@ -158,12 +160,19 @@ registrate = async () => {
         phone : state.phone.value,
         password : state.password.value,
         login : state.login.value,
+        type: 'user',
     };
-    let data = await postData('users', newUser);
-    alert('вы зарегестрированы');
+    let user = await postData('users', newUser);
+    this.props.dispatch(acAddUser(user));
+    this.props.dispatch(acSetCurrentUser(user));
+    alert('Вы зарегистрированы');
 }
 
   render() {
+    const stateKeys = Object.keys(this.state);
+    const formValid = stateKeys.every(key => (this.state[key].value.length && 
+        !this.state[key].errorMessage.length)) && this.state.password.value === this.state.passwordConfirm.value;
+
     return (
     this.props.users.loading && 
             (<div>Идет загрузка</div>) || 
@@ -213,12 +222,13 @@ registrate = async () => {
                 <span>{this.state.passwordConfirm.errorMessage}</span>
             </div>
             <div>
-                <button onClick={this.registrate}>
+                {(formValid && <button onClick={formValid ? this.registrate: null}
+                className={formValid ? 'active': 'disabled'}>
                     Зарегистрироваться
-                </button>
-                <button>
+                </button>)}
+                <NavLink to='/login' >
                     Войти
-                </button>
+                </NavLink>
             </div>
         </div>
             )
