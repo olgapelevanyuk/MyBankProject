@@ -1,17 +1,47 @@
 .footer {
     background-color: #ebedf1;
+    padding: 40px 20px;
 }
 .phoneBlock {
     display: flex;
+    align-items: center;
+    margin-bottom: 20px;
 }
 .phone-image {
-    width: 64px;
+    width: 24px;
+}
+.phone-image img {
+    width: 100%;
 }
 .phone-number {
     font-size: 42px;
+    margin-left: 20px;
+}
+.footer a {
+    text-decoration: none;
+    color: black;
 }
 .phone-type {
+    margin-left: 15px;
     font-size: 14px;
     color: rgba(27,39,51,.4);
     white-space: pre-line;
+}
+.copyright {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 64px;
+    color: rgba(27,39,51,.5);
+}
+.copyright a {
+    margin-left: 20px;
+    color: rgba(27,39,51,.5);
+}
+.connection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.networks a {
+    margin-left: 30px;
 }
