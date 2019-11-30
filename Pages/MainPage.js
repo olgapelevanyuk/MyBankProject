@@ -10,6 +10,7 @@ import appReducer from '../redux/appReducer';
 
 
 let store=createStore(appReducer);
+console.log(store.getState());
 
 class MainPage extends React.PureComponent {
   componentDidMount(){

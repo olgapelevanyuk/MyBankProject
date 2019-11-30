@@ -6,6 +6,9 @@ import Page_Products from './pages/Page_Products';
 import Page_Product from './pages/Page_Product';
 import Page_Basket from './pages/Page_Basket';*/
 import Page_Registration from "../Pages/Page_Registartion";
+import Page_login from "../Pages/Page_Login";
+import ApplicationList from '../components/ApplicationList';
+import Application from '../components/Application';
 class PagesRouter extends React.Component {
           
     render() {
@@ -25,6 +28,9 @@ class PagesRouter extends React.Component {
       <Route path="/products" component={Page_Products} />*/}
 
       <Route path="/registration" component={Page_Registration} />
+      <Route path="/login" component={Page_login} />
+      <Route path="/applications" exact component={ApplicationList} />
+      <Route path="/applications/:id" component={Application}/>
 
         </div>
       );
