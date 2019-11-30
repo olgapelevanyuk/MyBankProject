@@ -14,7 +14,7 @@ class PagesLinks extends React.Component {
 
     return (
       <div className='Links'>
-        <NavLink to="/" exact className={"showMenu"} activeClassName="ActivePageLink">
+        <NavLink to="/" exact className={"showMenuImg"}  >
           <img src='../images/logo.png' />
         </NavLink>
         <NavLink to="/depos" className={"showMenu"} activeClassName="ActivePageLink">Депозиты</NavLink>
