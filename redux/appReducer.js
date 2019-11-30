@@ -1,44 +1,42 @@
-﻿//import { COUNTRIES_LOADING, COUNTRIES_ERROR, COUNTRIES_SET } from './countriesAC';
+﻿import { USERS_LOADING, USERS_LOADED } from "../constants/actionTypes";
 
 const initState={
+  users: {
+    list: [],
+    loading: false,
+    currentUser: null, 
+  },
   
 }
 
 function appReducer(state=initState,action) {
   switch (action.type) {
 
-    case 'BIKES_LOADING': {
+    case USERS_LOADING: {
+      
       let newState={
-        status:1,
-        data:null,
+        ...state.users, 
+        loading: true,
       };
-      return newState;
+      return {
+        ...state,
+        users: newState,
+      };
     }
 
-    case 'BIKES_ERROR': {
+    case USERS_LOADED: {
+      
       let newState={
-        status:2,
-        data:null,
+        ...state.users, 
+        loading: false,
+        list: action.data,
       };
-      return newState;
+      return {
+        ...state,
+        users: newState,
+      };
     }
 
-    case 'BIKES_SET': {
-      let newState={
-        status:action.status,
-        data:action.data,
-      };
-      return newState;
-    }
-    case "COMMENT_SENT": {
-      let newState = {...state};
-      newState.data.forEach((v,i) => {
-        if(action.updatedItem.id == v.id){
-          newState.data[i] = action.updatedItem;
-        }
-      })
-      return newState;
-    }
     default:
       return state;
   }

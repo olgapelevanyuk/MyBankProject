@@ -4,6 +4,7 @@ import { createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
 import PagesLinks from "../components/PagesLinks";
 import PagesRouter from "../components/PagesRouter";
+import Footer from "../components/Footer";
 
 import appReducer from '../redux/appReducer';
 

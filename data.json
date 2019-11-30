@@ -1,5 +1,8 @@
 {
-    "users": [],
-    "applications": []
-
+  "users": [
+    {
+      "id": 1
+    }
+  ],
+  "applications": []
 }
