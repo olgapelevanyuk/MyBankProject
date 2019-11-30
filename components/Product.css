@@ -1,0 +1,49 @@
+.ProductWrap {
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+}
+.Product {
+    display: flex;
+}
+.Product-image {
+    width: 33%;
+    padding-right: 20px;
+}
+.Product-image img {
+    width: 100%;
+}
+.Product-descr {
+    width: 67%;
+    border-left: 1px solid rgba(0,0,0,0.1);
+    padding-left: 20px;
+}
+.Product-descr h2 {
+    font-size: 30px;
+}
+.Product-descr .descr {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.Product-descr .Product-span {
+    color: grey;
+    line-height: 1.5;
+}
+.Product-descr ul {
+    margin: 0;
+    padding-left: 16px;
+}
+.Product-descr li {
+    margin-bottom: 10px;
+}
+.backButton {
+    display: inline-block;
+    padding: 9px 20px;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 40px 0;
+    border-radius: 10px;
+}

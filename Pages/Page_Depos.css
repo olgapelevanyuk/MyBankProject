@@ -16,6 +16,7 @@
 }
 .depos-image{
     width: 30%;
+    margin-right: 20px;
 }
 .depos-info {
     width: 70%;
@@ -43,6 +44,29 @@
 .depos-adv-text {
     font-size: 24px;
     font-weight: 100;
-    line-height: 1.33;
+    line-height: 1.1;
     letter-spacing: normal;
+}
+.prod-buttons {
+    display: flex;
+    margin-top: 20px;
+    justify-content: flex-end;
+}
+.fullInfo {
+    padding: 9px 20px;
+    color: rgba(27, 39, 51, 0.9);
+    border-radius: 10px;
+    font-size: 16px;
+    border: 1px solid rgba(27, 39, 51, 0.9);
+    margin-right: 20px;
+    cursor: pointer;
+}
+.orderCall{
+    padding: 9px 20px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 16px;
+    background-color: #11bf6a;
+    border: 1px solid #11bf6a;
+    cursor: pointer
 }

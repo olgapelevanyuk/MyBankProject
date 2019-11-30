@@ -7,6 +7,7 @@ import Page_Cred from '../pages/Page_Cred';
 import Page_kard from '../pages/Page_kard';
 import Page_Registration from "../Pages/Page_Registartion";
 import Page_login from "../Pages/Page_Login";
+import Page_About from "../Pages/Page_About";
 import ApplicationList from '../components/ApplicationList';
 import Application from '../components/Application';
 class PagesRouter extends React.Component {
@@ -21,8 +22,8 @@ class PagesRouter extends React.Component {
 
           <Route path="/cred" component={Page_Cred} />
           <Route path="/kard" component={Page_kard} />
-          {/*<Route path="/about" component={Page_Basket} />
-          <Route path="/" component={Page_Start} />
+          <Route path="/about" component={Page_About} />
+          {/*<Route path="/" component={Page_Start} />
 
       <Route path="/products" component={Page_Products} />*/}
 
