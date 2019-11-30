@@ -102,7 +102,6 @@ export default class Page_kard extends React.PureComponent {
                     </div>
                     <div className='prod-buttons'>
                         <div className='fullInfo' onClick={()=>showProduct(item)}>Подробнее</div>
-                        <div className='orderCall'>Заказать карту</div>
                     </div>
                 </div>
             </div>
