@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import PagesLinks from "../components/PagesLinks";
 import PagesRouter from "../components/PagesRouter";
 import Footer from "../components/Footer";
-
+import CallOrderForm from '../components/CallOrderForm';
 import appReducer from '../redux/appReducer';
 
 
@@ -21,6 +21,7 @@ class MainPage extends React.PureComponent {
       <BrowserRouter>  
         <Provider store={store}>
           <div className='App' >
+            <CallOrderForm/>
             <PagesLinks />
             <PagesRouter />
             <Footer />

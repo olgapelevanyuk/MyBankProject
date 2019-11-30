@@ -1,9 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {acApplicationsLoaded, APPLICATIONS_LOADING} from '../constants/actionTypes';
+import {acApplicationsLoaded, APPLICATIONS_LOADING, acUpdateApplication, acSetCurrentApplication} from '../constants/actionTypes';
 import {withRouter} from 'react-router-dom';
-import { getData } from '../utils/utils';
- 
+import { getData, patchData } from '../utils/utils';
+import '../components/ApplicationList.css'; 
 class ApplicationList extends React.PureComponent{
 
     async componentDidMount(){
@@ -14,7 +14,10 @@ class ApplicationList extends React.PureComponent{
         this.props.dispatch(acApplicationsLoaded(data));           
     }        
 
-
+    changeApplStatus = async (applId, value) => {
+        let application = await patchData('applications/' + applId, {status: value});
+        this.props.dispatch(acUpdateApplication(application));
+    }
     renderClientApplications = () => {
         const {list} = this.props.applications;
         if(!list.length){
@@ -24,17 +27,36 @@ class ApplicationList extends React.PureComponent{
         }
         else {
             return list.map(appl => (
-                <div onDoubleClick={this.showApplicationFullInfo.bind(this, appl.id)} key={appl.id}>
+                <div onDoubleClick={this.showApplicationFullInfo.bind(this, appl.id)} key={appl.id} className="applListItem">
                     <div>{appl.id}</div>
-                    <div>{appl.clientName}</div>
-                    <div>{appl.info}</div>
+                    <div>{appl.date}</div>
+                    <div>{appl.time}</div>
+            <div>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</div>
+                    <div>{appl.topic}</div>
+            <div>
+                {appl.status === 1 && "Заявка получена банком"}
+                {appl.status === 2 && "Взята в работу"}
+                {appl.status === 3 && "Исполнена"}
+            </div>
+            <div>
+                <button onClick={this.showApplicationFullInfo.bind(this, appl.id)}>Просмотреть полную информацию</button>
+            </div>
+            <div>
+                <button onClick={this.changeApplStatus.bind(this, appl.id, 2)}>Взять в работу</button>
+            </div>
+            <div>
+                <button onClick={this.changeApplStatus.bind(this, appl.id, 3)}>Пометить как исполненную</button>
+            </div>
                 </div>
             ))
         }
     }
 
-    showApplicationFullInfo = id => {
-        this.history.push(`applications/${id}`);
+    showApplicationFullInfo = async id => {
+        let application = await getData('applications/' + id);
+        this.props.dispatch(acUpdateApplication(application));
+        this.props.dispatch(acSetCurrentApplication(application));
+        this.props.history.push(`applications/${id}`);
     }
 
     render () {

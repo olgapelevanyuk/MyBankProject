@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {deleteData, postData, patchData, getData} from '../utils/utils';
 import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser } from '../constants/actionTypes';
 import { NavLink } from 'react-router-dom';
-
+import {withRouter} from 'react-router-dom';
 class Page_Registration extends React.PureComponent {
 
     async componentDidMount(){
@@ -166,6 +166,7 @@ registrate = async () => {
     this.props.dispatch(acAddUser(user));
     this.props.dispatch(acSetCurrentUser(user));
     alert('Вы зарегистрированы');
+    this.props.history.push('/');
 }
 
   render() {
@@ -238,8 +239,8 @@ registrate = async () => {
 
 }
     
-export default connect(
+export default withRouter(connect(
     state => ({
         users: state.users,
     })
-)(Page_Registration);
+)(Page_Registration));

@@ -1,4 +1,4 @@
-﻿import { USERS_LOADING, USERS_LOADED, APPLICATIONS_LOADED, APPLICATIONS_LOADING, SET_CURRENT_USER, LOG_OUT, ADD_USER } from "../constants/actionTypes";
+﻿import { USERS_LOADING, USERS_LOADED, APPLICATIONS_LOADED, APPLICATIONS_LOADING, SET_CURRENT_USER, LOG_OUT, ADD_USER, ADD_APPLICATION, UPDATE_APPLICATION, SET_CURRENT_APPLICATION } from "../constants/actionTypes";
 
 const initState={
   users: {
@@ -60,7 +60,10 @@ function appReducer(state=initState,action) {
         ...state,
         users : {
           ...state.users,
-        currentUser: action.user,
+        currentUser: {
+          userProfile: action.user,
+          userData: null,
+        }
         } 
       };
       console.log(SET_CURRENT_USER, newState);
@@ -72,7 +75,10 @@ function appReducer(state=initState,action) {
         ...state,
         users : {
           ...state.users,
-        currentUser: null,
+          currentUser: {
+            userProfile: null,
+            userData: null,
+          }, 
         } 
       };
       return newState;
@@ -102,6 +108,52 @@ function appReducer(state=initState,action) {
       return newState;
     }
 
+    case ADD_APPLICATION : {
+      let newState={
+        ...state,
+        applications : {
+          ...state.applications,
+        list: [...state.applications.list, action.application],
+        } 
+      };
+      console.log(ADD_APPLICATION, newState);
+      return newState;
+    }
+
+    case UPDATE_APPLICATION : {
+      
+      const newApplList = state.applications.list.map(
+        application => {
+          if(application.id === action.application.id){
+            return action.application
+          }
+          else {
+            return application;
+          }
+        }
+      )
+      let newState={
+        ...state,
+        applications : {
+          ...state.applications,
+        list: [...newApplList],
+        } 
+      };
+      console.log(UPDATE_APPLICATION, newState);
+      return newState;
+    }
+    
+    case SET_CURRENT_APPLICATION : {
+      let newState={
+        ...state,
+        applications : {
+          ...state.applications,
+        currentApplication: action.application,
+        } 
+      };
+      console.log(SET_CURRENT_APPLICATION, newState);
+      return newState;
+    }
 
     default:
       return state;

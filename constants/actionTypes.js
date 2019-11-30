@@ -40,3 +40,27 @@ export const acLogOut = () => {
         type: LOG_OUT,
     }
 }
+export const ADD_APPLICATION = 'ADD_APPLICATION';
+export const acAddApplication = appl => {
+    return {
+        type: ADD_APPLICATION,
+        application: appl,
+    }
+}
+
+export const UPDATE_APPLICATION = 'UPDATE_APPLICATION';
+export const acUpdateApplication = appl => {
+    return {
+        type: UPDATE_APPLICATION,
+        application: appl,
+    }
+}
+
+export const SET_CURRENT_APPLICATION = 'SET_CURRENT_APPLICATION';
+
+export const acSetCurrentApplication = appl => {
+    return {
+        type: SET_CURRENT_APPLICATION,
+        application: appl,
+    }
+}

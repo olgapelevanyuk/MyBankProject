@@ -63,7 +63,89 @@
       "login": "ertert",
       "type": "user",
       "id": 8
+    },
+    {
+      "surname": "wer",
+      "firstName": "wer",
+      "lastName": "wer",
+      "eMail": "wer@wfew.rjyt",
+      "phone": "+375292525252",
+      "password": "123456",
+      "login": "wer",
+      "type": "user",
+      "id": 9
+    },
+    {
+      "surname": "sdfsdf",
+      "firstName": "sdfsdf",
+      "lastName": "sdfsdf",
+      "eMail": "sdfsdf@fsds.sdfsdf",
+      "phone": "+375295454545",
+      "password": "123456",
+      "login": "sdfsdf",
+      "type": "user",
+      "id": 10
+    },
+    {
+      "surname": "Сидоров",
+      "firstName": "Николай",
+      "lastName": "Ефимович",
+      "eMail": "wegwg@qwfq.wef",
+      "phone": "+375292555555",
+      "password": "operator",
+      "login": "operator",
+      "type": "operator",
+      "id": 11
     }
   ],
-  "applications": []
+  "applications": [
+    {
+      "clientSurname": {
+        "value": "regreg",
+        "errorMessage": ""
+      },
+      "clientFirstName": "ergreg",
+      "clientLastName": "",
+      "clientEMail": "ergre@efwef.reger",
+      "clientPhone": "+375295555555",
+      "clientComment": "regergerge",
+      "topic": "",
+      "type": "callOrder",
+      "operator": null,
+      "status": 2,
+      "date": "30.11.2019",
+      "time": "23:16:56",
+      "id": 1
+    },
+    {
+      "clientSurname": "ffff",
+      "clientFirstName": "ddd",
+      "clientLastName": "",
+      "clientEMail": "fff@dwedwef.reg",
+      "clientPhone": "+375292525555",
+      "clientComment": "ergregregge",
+      "topic": "",
+      "type": "callOrder",
+      "operator": null,
+      "status": 2,
+      "date": "30.11.2019",
+      "time": "23:18:16",
+      "id": 2
+    },
+    {
+      "clientSurname": "errte",
+      "clientFirstName": "eterte",
+      "clientLastName": "",
+      "clientEMail": "tetet@ewfre.retet",
+      "clientPhone": "+375292525222",
+      "clientComment": "ertertet",
+      "topic": "",
+      "type": "callOrder",
+      "operator": null,
+      "status": 3,
+      "date": "30.11.2019",
+      "time": "23:55:14",
+      "id": 3
+    }
+  ]
 }

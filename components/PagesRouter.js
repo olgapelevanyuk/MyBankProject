@@ -12,7 +12,6 @@ import Application from '../components/Application';
 class PagesRouter extends React.Component {
           
     render() {
-      console.log('render PagesRouter');
   
       return (
         <div className='Route'>
@@ -31,7 +30,6 @@ class PagesRouter extends React.Component {
       <Route path="/login" component={Page_login} />
       <Route path="/applications" exact component={ApplicationList} />
       <Route path="/applications/:id" component={Application}/>
-
         </div>
       );
       

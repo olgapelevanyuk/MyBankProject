@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {deleteData, postData, patchData, getData} from '../utils/utils';
 import { USERS_LOADING, USERS_LOADED, acSetCurrentUser } from '../constants/actionTypes';
-
+import {withRouter} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 class Page_Login extends React.PureComponent {
 
@@ -114,8 +114,8 @@ login =  () => {
 
 }
     
-export default connect(
+export default withRouter(connect(
     state => ({
         users: state.users,
     })
-)(Page_Login);
+)(Page_Login));
