@@ -1,0 +1,24 @@
+.about-banner {
+    background-size: cover;
+    height: 450px;
+    background: 50% no-repeat;
+}
+.about-banner h2 {
+    margin: 0 0 40px 0;
+    padding: 40px 0 0 10%;
+    font-size: 52px;
+}
+.banner-descr {
+    width: 50%;
+    font-weight: bold;
+    padding-left: 10%;
+}
+.about-text {
+    width: 80%;
+    margin: 20px auto;
+    line-height: 1.4;
+}
+.about-text h3 {
+    margin: 10px 0;
+    font-size: 30px;
+}
