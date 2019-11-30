@@ -1,7 +1,30 @@
 .Page_start .banner {
     width: 100%;
-    min-height: 450px;
+    height: 450px;
+    font-size: 64px;
     background: 0 no-repeat;
     background-size: cover;
+}
 
+.tableDescr{
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 0;
+}
+.tableFooter {
+    text-align: center;
+    font-size: 20px;
+    padding: 20px 0;
+}
+.td {
+    font-size: 24px;
+    font-weight: bold;
+}
+.Page_start table{
+    width: 100%;
+}
+.Page_start table tr  th, td {
+    width: 25%;
+    text-align: center;
+    padding: 10px 0;
 }
