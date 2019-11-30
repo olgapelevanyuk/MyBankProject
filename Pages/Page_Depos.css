@@ -1,0 +1,48 @@
+.Page_Depos .banner {
+    height: 450px;
+    font-size: 64px;
+    background: 50% no-repeat;
+    background-size: cover;
+}
+
+.depos-Wrap {
+    margin: 20px auto;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    border-radius: 20px;
+    padding: 20px 40px 20px 20px;
+    box-shadow: 0 0 6px 4px rgba(0,0,0,.1);
+}
+.depos-image{
+    width: 30%;
+}
+.depos-info {
+    width: 70%;
+}
+.depos-image img {
+    width: 100%;
+}
+.depos-title {
+    margin: 5px 0 8px 0;
+}
+.depos-descr {
+    margin-bottom: 24px;
+}
+.depos-adv {
+    display: flex;
+    justify-content: space-between;
+}
+.depos-adv-about{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.33;
+    color: rgba(27,39,51,.7);
+    margin-bottom: 8px;
+}
+.depos-adv-text {
+    font-size: 24px;
+    font-weight: 100;
+    line-height: 1.33;
+    letter-spacing: normal;
+}

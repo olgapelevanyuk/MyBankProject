@@ -1,0 +1,27 @@
+.showMenu {
+    margin: 20px 20px 20px 0;
+    font-size: 24px;
+    text-decoration: none;
+    color: black;
+    border-bottom: 2px solid white;
+}
+.ActivePageLink {
+    cursor: auto;
+    color: greenyellow;
+}
+.showMenu:hover {
+    border-bottom: 2px solid greenyellow;
+}
+.ActivePageLink:hover {
+    border-bottom: 2px solid white;
+}
+.showMenuImg{
+    margin: 20px 20px 20px 0;
+}
+.showMenuImg img {
+    max-width: 250px;
+}
+.Links {
+    display: flex;
+    align-items: center;
+}
