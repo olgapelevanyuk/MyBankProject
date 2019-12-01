@@ -23,8 +23,8 @@ class PagesLinks extends React.Component {
         <NavLink to="/about" className={"showMenu"} activeClassName="ActivePageLink">О банке</NavLink>
 
         
-        <NavLink to="/registration" className={"showMenu"} activeClassName="ActivePageLink">Pегистрация</NavLink>
-        <NavLink to="/login" className={"showMenu"} activeClassName="ActivePageLink">Вход</NavLink>
+        <NavLink to="/registration" className={"showMenu-login"} activeClassName="ActivePageLink-login">Pегистрация</NavLink>
+        <NavLink to="/login" className={"showMenu-login"} activeClassName="ActivePageLink-login">Вход</NavLink>
 
          <NavLink to="/applications" className={"showMenu"} activeClassName="ActivePageLink">Заявки</NavLink>
         
