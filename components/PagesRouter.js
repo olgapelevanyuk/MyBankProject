@@ -23,9 +23,6 @@ class PagesRouter extends React.Component {
           <Route path="/cred" component={Page_Cred} />
           <Route path="/kard" component={Page_kard} />
           <Route path="/about" component={Page_About} />
-          {/*<Route path="/" component={Page_Start} />
-
-      <Route path="/products" component={Page_Products} />*/}
 
       <Route path="/registration" component={Page_Registration} />
       <Route path="/login" component={Page_login} />
