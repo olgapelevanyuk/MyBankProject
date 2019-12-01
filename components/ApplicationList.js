@@ -1,17 +1,17 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {acApplicationsLoaded, APPLICATIONS_LOADING, acUpdateApplication, acSetCurrentApplication, USERS_LOADING, USERS_LOADED} from '../constants/actionTypes';
-import {withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { acApplicationsLoaded, APPLICATIONS_LOADING, acUpdateApplication, acSetCurrentApplication, USERS_LOADING, USERS_LOADED } from '../constants/actionTypes';
+import { withRouter } from 'react-router-dom';
 import { getData, patchData } from '../utils/utils';
-import '../components/ApplicationList.css'; 
+import '../components/ApplicationList.css';
 import NewOpratorRegistration from './NewOpratorRegistration';
-class ApplicationList extends React.PureComponent{
+class ApplicationList extends React.PureComponent {
 
-    async componentDidMount(){
+    async componentDidMount() {
         this.props.dispatch({
             type: USERS_LOADING,
         });
-            let usersList = await getData('users');
+        let usersList = await getData('users');
         this.props.dispatch({
             type: USERS_LOADED,
             data: usersList,
@@ -19,17 +19,17 @@ class ApplicationList extends React.PureComponent{
         this.props.dispatch({
             type: APPLICATIONS_LOADING,
         });
-            let data = await getData('applications');
-        this.props.dispatch(acApplicationsLoaded(data));           
-    }     
-    
+        let data = await getData('applications');
+        this.props.dispatch(acApplicationsLoaded(data));
+    }
+
     initialState = {
-        currentApplication: {id: null},
+        currentApplication: { id: null },
         operatorsListOpen: false,
         newOperatorRegistrationOpen: false,
     }
 
-    state = {...this.initialState}
+    state = { ...this.initialState }
 
     showOperatorRegistration = () => {
         this.setState({
@@ -45,10 +45,10 @@ class ApplicationList extends React.PureComponent{
 
     renderOperatorRegistration = () => {
         return (
-            <div className = {'newOperatorRegistrationContainer'}>
+            <div className={'newOperatorRegistrationContainer'}>
                 <div>
                     <NewOpratorRegistration
-                    close={this.hideOperatorRegistration}
+                        close={this.hideOperatorRegistration}
                     />
                 </div>
             </div>
@@ -72,11 +72,11 @@ class ApplicationList extends React.PureComponent{
         let application = await patchData('applications/' + this.state.currentApplication.id, changes);
         this.props.dispatch(acUpdateApplication(application));
         this.hideOperatorsList();
-    } 
+    }
 
     renderClientApplications = () => {
-        const {list} = this.props.applications;
-        if(!list.length){
+        const { list } = this.props.applications;
+        if (!list.length) {
             return (
                 <div>Заявок нет</div>
             )
@@ -87,31 +87,31 @@ class ApplicationList extends React.PureComponent{
                     <div>{appl.id}</div>
                     <div>{appl.date}</div>
                     <div>{appl.time}</div>
-            <div>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</div>
+                    <div>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</div>
                     <div>{appl.topic}</div>
-            <div>
-                {appl.status === 1 && "Заявка получена банком"}
-                {appl.status === 2 && "Взята в работу"}
-                {appl.status === 3 && "Исполнена"}
-            </div>
+                    <div>
+                        {appl.status === 1 && "Заявка получена банком"}
+                        {appl.status === 2 && "Взята в работу"}
+                        {appl.status === 3 && "Исполнена"}
+                    </div>
 
-            <div>
-            <div>
-                <button onClick={this.showApplicationFullInfo.bind(this, appl.id)}>Просмотреть полную информацию</button>
-            </div>
-            <div>
-                {appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'operator') &&
-                <button onClick={this.changeApplStatus.bind(this, appl, 2, this.props.users.currentUser.userProfile)}>Взять в работу</button>
-        }
-        {
-        appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin') &&
-                <button onClick={this.showOperatorsList.bind(this, appl.id)}>Передать в работу</button>
-        }
-            </div>
-            <div>
-                <button onClick={this.changeApplStatus.bind(this, appl.id, 3)}>Пометить как исполненную</button>
-            </div>
-            </div>
+                    <div>
+                        <div>
+                            <button onClick={this.showApplicationFullInfo.bind(this, appl.id)}>Просмотреть полную информацию</button>
+                        </div>
+                        <div>
+                            {appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'operator') &&
+                                <button onClick={this.changeApplStatus.bind(this, appl, 2, this.props.users.currentUser.userProfile)}>Взять в работу</button>
+                            }
+                            {
+                                appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin') &&
+                                <button onClick={this.showOperatorsList.bind(this, appl.id)}>Передать в работу</button>
+                            }
+                        </div>
+                        <div>
+                            <button onClick={this.changeApplStatus.bind(this, appl.id, 3)}>Пометить как исполненную</button>
+                        </div>
+                    </div>
                 </div>
             ))
         }
@@ -137,49 +137,49 @@ class ApplicationList extends React.PureComponent{
 
     hideOperatorsList = () => {
         this.setState({
-            currentApplication: {id: null},
-        operatorsListOpen: false,
+            currentApplication: { id: null },
+            operatorsListOpen: false,
         })
     }
 
     showOperatorsList = applId => {
         this.setState({
-            currentApplication: {id: applId},
-        operatorsListOpen: true,
+            currentApplication: { id: applId },
+            operatorsListOpen: true,
         })
     }
 
-    render () {
-        
-        
+    render() {
+
+
 
         return (
-            (this.props.applications.loading || this.props.users.loading) && 
-            (<div>Идет загрузка</div>) || 
+            (this.props.applications.loading || this.props.users.loading) &&
+            (<div>Идет загрузка</div>) ||
             (
                 <div>
-            <div>
-                <h2>Заявки клиентов</h2>
-                {this.renderClientApplications()}
-            </div>
-            { this.state.operatorsListOpen && 
-            <div className="operatorsListContainer">
-                <div>
-                    {this.renderOperatorsList()}
-                </div>
-                <div>
-                    <button onClick={this.hideOperatorsList}>Отменить выбор оператора</button>
-                </div>
-            </div>
-    }
+                    <div>
+                        <h2>Заявки клиентов</h2>
+                        {this.renderClientApplications()}
+                    </div>
+                    {this.state.operatorsListOpen &&
+                        <div className="operatorsListContainer">
+                            <div>
+                                {this.renderOperatorsList()}
+                            </div>
+                            <div>
+                                <button onClick={this.hideOperatorsList}>Отменить выбор оператора</button>
+                            </div>
+                        </div>
+                    }
 
-    {this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin' && (
-        (this.state.newOperatorRegistrationOpen && this.renderOperatorRegistration()) ||
-        <button onClick={this.showOperatorRegistration}>
-            Добавить нового оператора
-    </button> )
-    }
-            </div>
+                    {this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin' && (
+                        (this.state.newOperatorRegistrationOpen && this.renderOperatorRegistration()) ||
+                        <button onClick={this.showOperatorRegistration}>
+                            Добавить нового оператора
+    </button>)
+                    }
+                </div>
             )
         )
     }
