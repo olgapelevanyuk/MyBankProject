@@ -4,7 +4,7 @@ import { acApplicationsLoaded, APPLICATIONS_LOADING, acUpdateApplication, acSetC
 import { withRouter } from 'react-router-dom';
 import { getData, patchData } from '../utils/utils';
 import '../components/ApplicationList.css';
-import NewOpratorRegistration from './NewOpratorRegistration';
+import NewOperatorRegistration from './NewOperatorRegistration';
 class ApplicationList extends React.PureComponent {
 
     async componentDidMount() {
@@ -47,7 +47,7 @@ class ApplicationList extends React.PureComponent {
         return (
             <div className={'newOperatorRegistrationContainer'}>
                 <div>
-                    <NewOpratorRegistration
+                    <NewOperatorRegistration
                         close={this.hideOperatorRegistration}
                     />
                 </div>

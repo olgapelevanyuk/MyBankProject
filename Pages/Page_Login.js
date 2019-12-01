@@ -65,6 +65,7 @@ login =  () => {
         if(this.state.login.value === user.login){
             this.props.dispatch(acSetCurrentUser(user));
             alert('Вы вошли');
+            this.props.history.push('/');
         }
     })
     

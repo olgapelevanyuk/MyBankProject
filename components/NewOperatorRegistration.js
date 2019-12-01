@@ -127,7 +127,7 @@ class NewOperatorRegistration extends React.PureComponent {
             phone: '',
             password: state.password.value,
             login: state.login.value,
-            type: 'user',
+            type: 'operator',
         };
         let user = await postData('users', newUser);
         this.props.dispatch(acAddUser(user));
