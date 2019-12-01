@@ -81,9 +81,9 @@ login =  () => {
 
     return (
     this.props.users.loading && 
-            (<div>Идет загрузка</div>) || 
+            (<div>Идет загрузка...</div>) || 
             (
-        <div>
+        <div className='registrWrapper'>
             <div>
                 <label>Логин</label>
                 <input type="text" onChange={this.validateLogin} value={this.state.login.value}
@@ -97,12 +97,12 @@ login =  () => {
             <span>{this.state.password.errorMessage}</span>
             </div>    
                       <div>
-            {formValid &&  
+            
                 <button onClick={formValid ? this.login: null} className={formValid ? 'active': 'disabled'}>
                 Войти
                 </button>
-  }
-                <NavLink to='/registration' >
+  
+                <NavLink to='/registration' className='linkButton'>
                     Зарегистрироваться
                 </NavLink>
             </div>

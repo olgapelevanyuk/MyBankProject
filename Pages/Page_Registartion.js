@@ -4,6 +4,9 @@ import {deleteData, postData, patchData, getData} from '../utils/utils';
 import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser } from '../constants/actionTypes';
 import { NavLink } from 'react-router-dom';
 import {withRouter} from 'react-router-dom';
+
+import './Page_Registration.css';
+
 class Page_Registration extends React.PureComponent {
 
     async componentDidMount(){
@@ -176,9 +179,9 @@ registrate = async () => {
 
     return (
     this.props.users.loading && 
-            (<div>Идет загрузка</div>) || 
+            (<div>Идет загрузка...</div>) || 
             (
-        <div>
+        <div className='registrWrapper'>
             <div>
                 <label>Фамилия</label>
                 <input type="text" onChange={this.validateSurname} value={this.state.surname.value}/>
@@ -223,11 +226,11 @@ registrate = async () => {
                 <span>{this.state.passwordConfirm.errorMessage}</span>
             </div>
             <div>
-                {(formValid && <button onClick={formValid ? this.registrate: null}
+                <button onClick={formValid ? this.registrate: null}
                 className={formValid ? 'active': 'disabled'}>
                     Зарегистрироваться
-                </button>)}
-                <NavLink to='/login' >
+                </button>
+                <NavLink to='/login'  className='linkButton'>
                     Войти
                 </NavLink>
             </div>

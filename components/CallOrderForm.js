@@ -124,42 +124,50 @@ orderCall = async () => {
     });
 
     return(
-        <div className="container">
+        <div>
         {(!this.state.opened && 
-        <div onClick={this.openForm}>
+        <div onClick={this.openForm}  className="container">
             Заказать Звонок
         </div>) ||
-        (<div>
-            <div>
+        (<div className='callFormWrapper-container'>
+          <div className='callFormWrapper'>
+
+            <div className='closeFormButton' onClick={this.closeForm}>X</div>
+
+                <div>
                 <label>Фамилия</label>
                 <input type="text" onChange={this.validateSurname} value={this.state.surname.value}/>
-    <span>{this.state.surname.errorMessage}</span>
-            </div>
-            <div>
-            <label>Имя</label>
-            <input type="text" onChange={this.validateFirstName} value={this.state.firstName.value}/>
-            <span>{this.state.firstName.errorMessage}</span>
-            </div>
-            <div>
-            <label>e-mail</label>
-            <input type="text" onChange={this.validateEMail} value={this.state.eMail.value}/ >
-            <span>{this.state.eMail.errorMessage}</span>
-            </div>
-            <div>
-            <label>Номер телефона</label>
-            <input type="text" onChange={this.validatePhone} value={this.state.phone.value}/ >
-                <span>{this.state.phone.errorMessage}</span>
-            </div>
-            <div>
-            <label>Интересующая тема</label>
-            <textarea onChange={this.validateComment} value={this.state.comment.value}>
-                </textarea>
-                <span>{this.state.comment.errorMessage}</span>
-            </div>
-            {(formValid && <button onClick={formValid ? this.orderCall: null}
-                className={formValid ? 'active': 'disabled'}>
+                <span>{this.state.surname.errorMessage}</span>
+                  </div>
+                  <div>
+                  <label>Имя</label>
+                  <input type="text" onChange={this.validateFirstName} value={this.state.firstName.value}/>
+                  <span>{this.state.firstName.errorMessage}</span>
+                  </div>
+                  <div>
+                  <label>e-mail</label>
+                  <input type="text" onChange={this.validateEMail} value={this.state.eMail.value}/ >
+                  <span>{this.state.eMail.errorMessage}</span>
+                  </div>
+                  <div>
+                  <label>Номер телефона</label>
+                  <input type="text" onChange={this.validatePhone} value={this.state.phone.value}/ >
+                      <span>{this.state.phone.errorMessage}</span>
+                  </div>
+                  <div>
+                  <label>Интересующая тема</label>
+                  <textarea onChange={this.validateComment} value={this.state.comment.value}>
+                      </textarea>
+                      <span>{this.state.comment.errorMessage}</span>
+                  </div>
+                  <button onClick={formValid ? this.orderCall: null}
+                      className={formValid ? 'active': 'disabled'}>
                     Заказать звонок
-                </button>)}
+                </button>
+
+
+          </div>
+            
         </div>)}
         </div>
 )
