@@ -4,6 +4,7 @@ import {deleteData, postData, patchData, getData} from '../utils/utils';
 import { USERS_LOADING, USERS_LOADED, acSetCurrentUser } from '../constants/actionTypes';
 import {withRouter} from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
+import "./Page_Registration.css";
 class Page_Login extends React.PureComponent {
 
     async componentDidMount(){
