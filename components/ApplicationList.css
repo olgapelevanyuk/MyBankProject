@@ -41,7 +41,7 @@
   width: 80%; 
 }
 
-td, th {
+.applListTable td, .applListTable th {
     border: 1px solid black;
     padding: 10px;
 }
