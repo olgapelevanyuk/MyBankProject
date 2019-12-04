@@ -83,23 +83,23 @@ class ApplicationList extends React.PureComponent {
         }
         else {
             return list.map(appl => (
-                <div onDoubleClick={this.showApplicationFullInfo.bind(this, appl.id)} key={appl.id} className="applListItem">
-                    <div>{appl.id}</div>
-                    <div>{appl.date}</div>
-                    <div>{appl.time}</div>
-                    <div>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</div>
-                    <div>{appl.topic}</div>
-                    <div>
+                <tr onDoubleClick={this.showApplicationFullInfo.bind(this, appl.id)} key={appl.id} className="applListItem">
+                    <td className={'applId'}>{appl.id}</td>
+                    <td className={'applDate'}>{appl.date}</td>
+                    <td className={'applTime'}>{appl.time}</td>
+                    <td>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</td>
+                    <td>{appl.topic}</td>
+                    <td>
                         {appl.status === 1 && "Заявка получена банком"}
                         {appl.status === 2 && "Взята в работу"}
                         {appl.status === 3 && "Исполнена"}
-                    </div>
+                    </td>
 
-                    <div>
-                        <div>
+                    <td>
+                        
                             <button onClick={this.showApplicationFullInfo.bind(this, appl.id)}>Просмотреть полную информацию</button>
-                        </div>
-                        <div>
+                        
+                       
                             {appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'operator') &&
                                 <button onClick={this.changeApplStatus.bind(this, appl, 2, this.props.users.currentUser.userProfile)}>Взять в работу</button>
                             }
@@ -107,12 +107,12 @@ class ApplicationList extends React.PureComponent {
                                 appl.status === 1 && (this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin') &&
                                 <button onClick={this.showOperatorsList.bind(this, appl.id)}>Передать в работу</button>
                             }
-                        </div>
-                        <div>
+                       
+                        
                             <button onClick={this.changeApplStatus.bind(this, appl.id, 3)}>Пометить как исполненную</button>
-                        </div>
-                    </div>
-                </div>
+                        
+                    </td>
+                </tr>
             ))
         }
     }
@@ -120,7 +120,7 @@ class ApplicationList extends React.PureComponent {
     renderOperatorsList = () => {
         const operatorsList = this.props.users.list.filter(user => user.type === 'operator');
         return operatorsList.map(operator => (
-            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id}>
+            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id} className={'operatorListItem'}>
                 <div>
                     {`${operator.surname} ${operator.firstName} ${operator.LastName}`}
                 </div>
@@ -157,10 +157,26 @@ class ApplicationList extends React.PureComponent {
             (this.props.applications.loading || this.props.users.loading) &&
             (<div>Идет загрузка</div>) ||
             (
-                <div>
-                    <div>
+                <div className={'applListMainContainer'}>
+                    <div className={'applicationsContainer'}>
                         <h2>Заявки клиентов</h2>
+                        <table className={'applListTable'}>
+                            <thead>
+                        <tr>
+                            <th className={'applId'}>Номер</th> 
+                            <th className={'applDate'}>Дата</th> 
+                            <th className={'applTime'}>Время</th> 
+                            <th>Содержание</th>  
+                            <th>Тема</th>
+                            <th>Статус</th> 
+                            <th>Действия</th>
+                             
+                        </tr>
+                        </thead>
+                        <tbody>
                         {this.renderClientApplications()}
+                        </tbody>
+                        </table>
                     </div>
                     {this.state.operatorsListOpen &&
                         <div className="operatorsListContainer">
