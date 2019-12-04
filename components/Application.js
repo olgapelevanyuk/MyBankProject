@@ -24,7 +24,7 @@ class Application extends React.PureComponent {
     renderOperatorsList = () => {
         const operatorsList = this.props.users.list.filter(user => user.type === 'operator');
         return operatorsList.map(operator => (
-            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id}>
+            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id} className='operator'>
                 <div>
                     {`${operator.surname} ${operator.firstName} ${operator.LastName}`}
                 </div>
@@ -182,18 +182,15 @@ class Application extends React.PureComponent {
                     </button>
                         </div>
                     }
-                    {
-                        <div>
-
-                        </div>
-                    }
                     {this.state.operatorsListOpen &&
                         <div className="operatorsListContainer">
-                            <div>
-                                {this.renderOperatorsList()}
-                            </div>
-                            <div>
-                                <button onClick={this.hideOperatorsList}>Отменить выбор оператора</button>
+                            <div className='operatorsListContainer-wrap'>
+                                <div>
+                                    {this.renderOperatorsList()}
+                                </div>
+                                <div>
+                                    <button onClick={this.hideOperatorsList} className='active'>Отменить выбор оператора</button>
+                                </div>
                             </div>
                         </div>
                     }

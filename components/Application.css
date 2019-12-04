@@ -15,3 +15,24 @@
     padding: 5px 10px;
     min-width: 50%;
 }
+.operatorsListContainer {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(150,125,50,0.6);
+}
+.operatorsListContainer-wrap {
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px 30px;
+    text-align: center;
+    background-color: white;
+    border-radius: 10px;
+}
+.operator {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
