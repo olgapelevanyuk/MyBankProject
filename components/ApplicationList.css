@@ -1,19 +1,5 @@
 
-
-.operatorsListContainer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0,0,0,0.3);
-}
-
-.operatorsListContainer h2 {
-   
-}
-
-.operatorsListContainer> * {
+.newOperatorRegistrationContainer> * {
      background-color: whitesmoke;
      position: absolute;
      left: 10%;
@@ -28,7 +14,12 @@
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(150,125,50,0.6);
+}
+
+.newOperatorRegistrationContainer span {
+    display: block;
+    color: red;
 }
 
 .applicationsContainer {
@@ -63,9 +54,20 @@
     color: whitesmoke;
 }
 
-
-
 .applId, .applDate, .applTime {
     width: 20px;
 }
 
+.addNewOperButton {
+    margin: 10px;
+}
+
+.addNewOperButton button {
+    display: block;
+    margin: auto;
+}
+
+.addNewOperButton button:hover {
+    background-color: blue;
+    color: whitesmoke;
+}

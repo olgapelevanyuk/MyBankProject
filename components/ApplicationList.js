@@ -191,9 +191,12 @@ class ApplicationList extends React.PureComponent {
 
                     {this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin' && (
                         (this.state.newOperatorRegistrationOpen && this.renderOperatorRegistration()) ||
+                        <div className={'addNewOperButton'}>
                         <button onClick={this.showOperatorRegistration}>
                             Добавить нового оператора
-    </button>)
+    </button>
+    </div>)
+
                     }
                 </div>
             )
