@@ -4,6 +4,8 @@ import { deleteData, postData, patchData, getData } from '../utils/utils';
 import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser } from '../constants/actionTypes';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import  './NewOperatorRegistration.css';
+
 class NewOperatorRegistration extends React.PureComponent {
 
     async componentDidMount() {
@@ -144,8 +146,9 @@ class NewOperatorRegistration extends React.PureComponent {
             this.props.users.loading &&
             (<div>Идет загрузка</div>) ||
             (
-                <div>
-                    <div>
+                <div className={'newOperatorRegistrationFormContainer'}>
+                    <div className={'newOperatorRegistrationForm'}>
+                        <div>
                         <label>Фамилия</label>
                         <input type="text" onChange={this.validateSurname} value={this.state.surname.value} />
                         <span>{this.state.surname.errorMessage}</span>
@@ -183,6 +186,7 @@ class NewOperatorRegistration extends React.PureComponent {
                             className={formValid ? 'active' : 'disabled'}>
                             Зарегистрировать
                 </button>)}
+                    </div>
                     </div>
                 </div>
             )

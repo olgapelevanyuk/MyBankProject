@@ -76,7 +76,6 @@ class Application extends React.PureComponent {
                 }
             }
         } = this.props;
-        console.log(this.props.history);
 
         return (
             (!currentApplication || !userProfile) &&

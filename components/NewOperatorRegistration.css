@@ -1,0 +1,41 @@
+.newOperatorRegistrationFormContainer {
+    background-color: whitesmoke;
+    position: absolute;
+    left: 10%;
+    right: 10%;
+    top: 10%;
+}
+
+
+.newOperatorRegistrationForm {
+    margin:auto;
+    width: 90%;
+}
+
+.newOperatorRegistrationForm input, textarea {
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    min-width: 50%;
+}
+
+.newOperatorRegistrationForm label {
+    display: inline-block;
+    min-width: 40%;
+    font-size: 20px;
+    margin-right: 20px;
+}
+
+.newOperatorRegistrationContainer {
+   position: fixed;
+   left: 0;
+   right: 0;
+   top: 0;
+   bottom: 0;
+   background-color: rgba(150,125,50,0.6);
+}
+
+.newOperatorRegistrationContainer span {
+   display: block;
+   color: red;
+}

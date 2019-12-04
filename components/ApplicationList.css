@@ -1,27 +1,3 @@
-
-.newOperatorRegistrationContainer> * {
-     background-color: whitesmoke;
-     position: absolute;
-     left: 10%;
-     right: 10%;
-     top: 10%;
-     overflow-y: scroll;   
-}
-
-.newOperatorRegistrationContainer {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(150,125,50,0.6);
-}
-
-.newOperatorRegistrationContainer span {
-    display: block;
-    color: red;
-}
-
 .applicationsContainer {
     margin: auto;
 }
