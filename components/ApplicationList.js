@@ -122,7 +122,7 @@ class ApplicationList extends React.PureComponent {
         return operatorsList.map(operator => (
             <div onClick={this.assignOperator.bind(this, operator)} key={operator.id} className={'operatorListItem'}>
                 <div>
-                    {`${operator.surname} ${operator.firstName} ${operator.LastName}`}
+                    {`${operator.surname} ${operator.firstName} ${operator.lastName}`}
                 </div>
             </div>
         ))

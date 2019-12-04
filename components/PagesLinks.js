@@ -1,18 +1,37 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
+import {connect} from 'react-redux';
 import './PagesLinks.css';
-
+import { acLogOut } from '../constants/actionTypes';
+import {withRouter} from 'react-router-dom';
 
 class PagesLinks extends React.Component {
 
   state = {
   }
 
+  logOut = () => {
+    this.props.dispatch(
+      acLogOut()
+    );
+    this.props.history.push('/');
+  }
           
   render() {
 
     return (
+      <div>
+      <div className={'RegLoginNavLinks'}>
+        { !this.props.users.currentUser.userProfile && 
+        (<div>
+<NavLink to="/registration" className={"showMenu-login"} activeClassName="ActivePageLink-login">Pегистрация</NavLink>
+        <NavLink to="/login" className={"showMenu-login"} activeClassName="ActivePageLink-login">Вход</NavLink>
+        </div>) || 
+        <div>
+          {this.props.users.currentUser.userProfile.surname + ' ' +  this.props.users.currentUser.userProfile.firstName} <span onClick={this.logOut} className={"showMenu-login"}>Выйти</span>
+          </div>
+        }
+        </div>
       <div className='Links'>
         <NavLink to="/" exact className={"showMenuImg"}  >
           <img src='../images/logo.png' />
@@ -23,11 +42,11 @@ class PagesLinks extends React.Component {
         <NavLink to="/about" className={"showMenu"} activeClassName="ActivePageLink">О банке</NavLink>
 
         
-        <NavLink to="/registration" className={"showMenu-login"} activeClassName="ActivePageLink-login">Pегистрация</NavLink>
-        <NavLink to="/login" className={"showMenu-login"} activeClassName="ActivePageLink-login">Вход</NavLink>
-
-         <NavLink to="/applications" className={"showMenu"} activeClassName="ActivePageLink">Заявки</NavLink>
         
+        {this.props.users.currentUser.userProfile && (this.props.users.currentUser.userProfile.type === 'admin' || this.props.users.currentUser.userProfile.type === 'operator') && 
+         <NavLink to="/applications" className={"showMenu"} activeClassName="ActivePageLink">Заявки</NavLink>
+  }
+      </div>
       </div>
     );
     
@@ -36,4 +55,8 @@ class PagesLinks extends React.Component {
 }
     
 
-export default PagesLinks;
+export default withRouter(connect(
+  state => ({
+    users: state.users,
+})
+)(PagesLinks));

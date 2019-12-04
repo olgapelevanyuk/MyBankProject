@@ -39,6 +39,7 @@
     text-decoration: none;
     font-style: italic;
     border-bottom: 1px solid white;
+    cursor: pointer;
 }
 .showMenu-login:hover {
     border-bottom: 1px solid black;
@@ -48,4 +49,9 @@
     color: black;
     border-bottom: 1px solid white;
     text-decoration: none;
+}
+.RegLoginNavLinks {
+    position: absolute;
+    right: 10px;
+    top: 5px;
 }

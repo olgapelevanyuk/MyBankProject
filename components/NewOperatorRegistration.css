@@ -4,6 +4,8 @@
     left: 10%;
     right: 10%;
     top: 10%;
+    padding: 10px;
+   border-radius: 5px;
 }
 
 .newOperatorRegistrationForm {
@@ -36,9 +38,26 @@
    top: 0;
    bottom: 0;
    background-color: rgba(150,125,50,0.6);
+   
 }
 
 .newOperatorRegistrationContainer span {
    display: block;
    color: red;
+}
+
+.newOperatorRegistrationFormContainer .closeFormButton {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: -15px;
+    right: -15px;
+    color: white;
+    font-weight: bold;
+    background-color: red;
+    line-height: 30px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 30px;
+    cursor: pointer;
 }
