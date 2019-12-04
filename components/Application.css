@@ -1,0 +1,17 @@
+.Application {
+    width: 80%;
+    margin: 10px auto 30px;
+}
+.Application h2 {
+    text-align: center;
+}
+.Application .title {
+    color: gray;
+    margin: 10px 0;
+}
+.Application input {    
+    border: 1px solid black;
+    border-radius: 4px;
+    padding: 5px 10px;
+    min-width: 50%;
+}

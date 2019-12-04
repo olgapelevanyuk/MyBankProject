@@ -2,7 +2,9 @@
     width: 70%;
     margin: 30px auto;
 }
-
+input, button {
+    outline: none;
+}
 .registrWrapper div {
     padding: 5px;
 }
