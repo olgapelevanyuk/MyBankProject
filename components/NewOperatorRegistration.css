@@ -6,7 +6,6 @@
     top: 10%;
 }
 
-
 .newOperatorRegistrationForm {
     margin:auto;
     width: 90%;
@@ -24,6 +23,10 @@
     min-width: 40%;
     font-size: 20px;
     margin-right: 20px;
+}
+
+.newOperatorRegistrationForm > div {
+    padding: 5px;
 }
 
 .newOperatorRegistrationContainer {

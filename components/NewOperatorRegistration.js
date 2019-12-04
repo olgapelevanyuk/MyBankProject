@@ -147,6 +147,7 @@ class NewOperatorRegistration extends React.PureComponent {
             (<div>Идет загрузка</div>) ||
             (
                 <div className={'newOperatorRegistrationFormContainer'}>
+                    <div className='closeFormButton' onClick={this.closeForm}>X</div>
                     <div className={'newOperatorRegistrationForm'}>
                         <div>
                         <label>Фамилия</label>
