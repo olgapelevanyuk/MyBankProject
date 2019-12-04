@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { acApplicationsLoaded, APPLICATIONS_LOADING, acSetCurrentApplication, acUpdateApplication } from '../constants/actionTypes';
 import { withRouter } from 'react-router-dom';
 import { getData, patchData } from '../utils/utils';
+import './Application.css';
 
 class Application extends React.PureComponent {
     async componentDidMount() {
@@ -79,13 +80,13 @@ class Application extends React.PureComponent {
 
         return (
             (!currentApplication || !userProfile) &&
-            <div>Идет загрузка</div> ||
+            <div>Идет загрузка...</div> ||
             (
-                <div>
+                <div className='Application'>
                     <h2>{`Заявка № ${currentApplication.id}`}</h2>
                     <div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Дата и время заявки
                         </div>
                             <div>
@@ -93,7 +94,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Фамилия клиента
                         </div>
                             <div>
@@ -101,7 +102,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Имя клиента
                         </div>
                             <div>
@@ -109,7 +110,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Отчество клиента
                         </div>
                             <div>
@@ -117,7 +118,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Телефон клиента
                         </div>
                             <div>
@@ -125,7 +126,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 e-mail клиента
                         </div>
                             <div>
@@ -133,7 +134,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Комментарий клиента
                         </div>
                             <div>
@@ -141,7 +142,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Тип заявки
                         </div>
                             <div>
@@ -149,7 +150,7 @@ class Application extends React.PureComponent {
                             </div>
                         </div>
                         <div>
-                            <div>
+                            <div className='title'>
                                 Статус заявки
                         </div>
                             <div>
@@ -158,7 +159,7 @@ class Application extends React.PureComponent {
                         </div>
                         {currentApplication.operator &&
                             <div>
-                                <div>
+                                <div className='title'>
                                     Оператор
                         </div>
                                 <div>
@@ -175,7 +176,7 @@ class Application extends React.PureComponent {
                     }
                     {currentApplication.status === 1 && userProfile.type === 'admin' &&
                         <div>
-                            <button onClick={this.showOperatorsList.bind(this, currentApplication.id)}>
+                            <button onClick={this.showOperatorsList.bind(this, currentApplication.id)} className='active'>
                                 Передать в работу
                     </button>
                         </div>

@@ -96,6 +96,8 @@
       "login": "operator",
       "type": "operator",
       "id": 11
+<<<<<<< HEAD
+=======
     },
     {
       "surname": "qwe",
@@ -162,6 +164,7 @@
       "login": "yujyuj",
       "type": "operator",
       "id": 17
+>>>>>>> c220b23fa37ed5a9306d09608d2b911a13966af5
     }
   ],
   "applications": [
@@ -214,40 +217,21 @@
       "id": 3
     },
     {
-      "clientSurname": "ergerg",
-      "clientFirstName": "ergerg",
+      "clientSurname": "bdfy",
+      "clientFirstName": "bdfy",
       "clientLastName": "",
-      "clientEMail": "ergerg@ewfwe.wefwef",
-      "clientPhone": "+375292225255",
-      "clientComment": "wefwefwef",
-      "topic": "",
-      "type": "callOrder",
-      "operator": {
-        "surname": "Сидоров",
-        "firstName": "Николай",
-        "lastName": "Ефимович",
-        "eMail": "wegwg@qwfq.wef",
-        "phone": "+375292555555",
-        "password": "operator",
-        "login": "operator",
-        "type": "operator",
-        "id": 11
-      },
-      "status": 3,
-      "date": "01.12.2019",
-      "time": "15:00:57",
-      "id": 4
-    },
-    {
-      "clientSurname": "wefwefew",
-      "clientFirstName": "wefwe",
-      "clientLastName": "",
-      "clientEMail": "wefewf@efw.erg",
-      "clientPhone": "+375292525555",
-      "clientComment": "ergergergge",
+      "clientEMail": "jhvb@hbbjh.ih",
+      "clientPhone": "+375255555555",
+      "clientComment": "",
       "topic": "",
       "type": "callOrder",
       "operator": null,
+<<<<<<< HEAD
+      "status": 1,
+      "date": "05.12.2019",
+      "time": "00:21:19",
+      "id": 4
+=======
       "status": 3,
       "date": "01.12.2019",
       "time": "15:20:56",
@@ -492,6 +476,7 @@
       "date": "05.12.2019",
       "time": "00:23:55",
       "id": 15
+<<<<<<< HEAD
     },
     {
       "clientSurname": "wfwef",
@@ -537,6 +522,9 @@
       "date": "05.12.2019",
       "time": "00:56:26",
       "id": 18
+=======
+>>>>>>> c220b23fa37ed5a9306d09608d2b911a13966af5
+>>>>>>> d02eda0ed097292690982c5aa143ce1c5cd1f780
     }
   ]
 }
