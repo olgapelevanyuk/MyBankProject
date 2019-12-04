@@ -61,6 +61,11 @@
     margin-right: 20px;
     cursor: pointer;
 }
+.fullInfo:hover {
+    background-color: orange;
+    color: white;
+    border: 1px solid orange;
+}
 .orderCall{
     padding: 9px 20px;
     color: #fff;
