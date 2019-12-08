@@ -19,6 +19,13 @@ export const acAddUser = user => {
     }
 }
 
+export const acDeleteUser = id => {
+    return {
+        type: DELETE_USER,
+        id: id,
+    }
+}
+
 export const acUpdateUser = user => {
     return {
         type: UPDATE_USER,

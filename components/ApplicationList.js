@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { getData, patchData } from '../utils/utils';
 import '../components/ApplicationList.css';
 import NewOperatorRegistration from './NewOperatorRegistration';
+import OperatorsList from './OperatorsList';
 class ApplicationList extends React.PureComponent {
 
     async componentDidMount() {
@@ -26,34 +27,10 @@ class ApplicationList extends React.PureComponent {
     initialState = {
         currentApplication: { id: null },
         operatorsListOpen: false,
-        newOperatorRegistrationOpen: false,
     }
 
     state = { ...this.initialState }
 
-    showOperatorRegistration = () => {
-        this.setState({
-            newOperatorRegistrationOpen: true,
-        })
-    }
-
-    hideOperatorRegistration = () => {
-        this.setState({
-            newOperatorRegistrationOpen: false,
-        })
-    }
-
-    renderOperatorRegistration = () => {
-        return (
-            <div className={'newOperatorRegistrationContainer'}>
-                <div>
-                    <NewOperatorRegistration
-                        close={this.hideOperatorRegistration}
-                    />
-                </div>
-            </div>
-        )
-    }
 
     changeApplStatus = async (appl, status, user) => {
         const changes = {
@@ -117,16 +94,7 @@ class ApplicationList extends React.PureComponent {
         }
     }
 
-    renderOperatorsList = () => {
-        const operatorsList = this.props.users.list.filter(user => user.type === 'operator');
-        return operatorsList.map(operator => (
-            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id}  className='operator'>
-                <div>
-                    {`${operator.surname} ${operator.firstName} ${operator.lastName}`}
-                </div>
-            </div>
-        ))
-    }
+   
 
     showApplicationFullInfo = async id => {
         let application = await getData('applications/' + id);
@@ -143,6 +111,7 @@ class ApplicationList extends React.PureComponent {
     }
 
     showOperatorsList = applId => {
+        console.log(applId);
         this.setState({
             currentApplication: { id: applId },
             operatorsListOpen: true,
@@ -179,23 +148,16 @@ class ApplicationList extends React.PureComponent {
                         </table>
                     </div>
                     {this.state.operatorsListOpen &&
-                        <div className="operatorsListContainer">
-                            <div className='operatorsListContainer-wrap'>
-                                <div>
-                                    {this.renderOperatorsList()}
-                                </div>
-                                <div>
-                                    <button onClick={this.hideOperatorsList} className='active'>Отменить выбор оператора</button>
-                                </div>
-                            </div>
-                        </div>
+                        <OperatorsList
+                            chooseOperator={this.state.currentApplication.id ? this.assignOperator: null}
+                            close={this.hideOperatorsList}
+                        />
                     }
 
                     {this.props.users.currentUser.userProfile && this.props.users.currentUser.userProfile.type === 'admin' && (
-                        (this.state.newOperatorRegistrationOpen && this.renderOperatorRegistration()) ||
                         <div className={'addNewOperButton'}>
-                        <button onClick={this.showOperatorRegistration}>
-                            Добавить нового оператора
+                        <button onClick={this.showOperatorsList.bind(this, null)}>
+                            Список операторов
     </button>
     </div>)
 

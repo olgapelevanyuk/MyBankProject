@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteData, postData, patchData, getData } from '../utils/utils';
-import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser } from '../constants/actionTypes';
+import { USERS_LOADING, USERS_LOADED, acAddUser, acSetCurrentUser, acUpdateUser } from '../constants/actionTypes';
 import { NavLink } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
 import  './NewOperatorRegistration.css';
@@ -10,15 +10,23 @@ class NewOperatorRegistration extends React.PureComponent {
 
     async componentDidMount() {
     }
+    
 
-
-    state = {
+    state = !this.props.operator ? {
         surname: { value: '', errorMessage: '' },
         firstName: { value: '', errorMessage: '' },
         lastName: { value: '', errorMessage: '' },
         login: { value: '', errorMessage: '' },
         password: { value: '', errorMessage: '' },
         passwordConfirm: { value: '', errorMessage: '' },
+    } :
+    {
+        surname: { value: this.props.operator.surname, errorMessage: '' },
+        firstName: { value: this.props.operator.firstName, errorMessage: '' },
+        lastName: { value: this.props.operator.lastName, errorMessage: '' },
+        login: { value: this.props.operator.login, errorMessage: '' },
+        password: { value: '', errorMessage: '' },
+        passwordConfirm: { value: '', errorMessage: '' }, 
     }
 
     validateSurname = e => {
@@ -131,9 +139,16 @@ class NewOperatorRegistration extends React.PureComponent {
             login: state.login.value,
             type: 'operator',
         };
+        if(!this.props.operator) {
         let user = await postData('users', newUser);
         this.props.dispatch(acAddUser(user));
         alert('Оператор зарегистрирован');
+        } 
+        else {
+            let user = await patchData('users/' + this.props.operator.id, newUser);
+        this.props.dispatch(acUpdateUser(user));
+        alert('Изменения успешно внесены');
+        }
         this.props.close();
     }
 

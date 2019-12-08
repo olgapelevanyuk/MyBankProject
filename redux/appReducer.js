@@ -1,4 +1,4 @@
-﻿import { USERS_LOADING, USERS_LOADED, APPLICATIONS_LOADED, APPLICATIONS_LOADING, SET_CURRENT_USER, LOG_OUT, ADD_USER, ADD_APPLICATION, UPDATE_APPLICATION, SET_CURRENT_APPLICATION } from "../constants/actionTypes";
+﻿import { USERS_LOADING, USERS_LOADED, APPLICATIONS_LOADED, APPLICATIONS_LOADING, SET_CURRENT_USER, LOG_OUT, ADD_USER, ADD_APPLICATION, UPDATE_APPLICATION, SET_CURRENT_APPLICATION, UPDATE_USER, DELETE_USER } from "../constants/actionTypes";
 
 const initState={
   users: {
@@ -54,6 +54,44 @@ function appReducer(state=initState,action) {
       console.log(ADD_USER, newState);
       return newState;
     }
+
+    case UPDATE_USER :{ 
+    const newUserslList = state.users.list.map(
+      user => {
+        if(user.id === action.user.id){
+          return action.user
+        }
+        else {
+          return user;
+        }
+      }
+    )
+    let newState={
+      ...state,
+      users : {
+        ...state.users,
+      list: [...newUserslList],
+      } 
+    };
+    console.log(UPDATE_USER, newState);
+    return newState;
+  }
+
+  case DELETE_USER : {
+    const newUserslList = state.users.list.filter(
+      user =>
+      (user.id !== action.id)
+    )
+    let newState={
+      ...state,
+      users : {
+        ...state.users,
+      list: [...newUserslList],
+      } 
+    };
+    console.log(DELETE_USER, newState);
+    return newState;
+  }
 
     case SET_CURRENT_USER : {
       let newState={

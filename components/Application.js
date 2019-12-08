@@ -4,6 +4,7 @@ import { acApplicationsLoaded, APPLICATIONS_LOADING, acSetCurrentApplication, ac
 import { withRouter } from 'react-router-dom';
 import { getData, patchData } from '../utils/utils';
 import './Application.css';
+import OperatorsList from './OperatorsList';
 
 class Application extends React.PureComponent {
     async componentDidMount() {
@@ -20,17 +21,6 @@ class Application extends React.PureComponent {
     }
 
     state = { ...this.initialState }
-
-    renderOperatorsList = () => {
-        const operatorsList = this.props.users.list.filter(user => user.type === 'operator');
-        return operatorsList.map(operator => (
-            <div onClick={this.assignOperator.bind(this, operator)} key={operator.id} className='operator'>
-                <div>
-                    {`${operator.surname} ${operator.firstName} ${operator.lastName}`}
-                </div>
-            </div>
-        ))
-    }
 
     assignOperator = async (operator) => {
         const changes = {
@@ -182,16 +172,10 @@ class Application extends React.PureComponent {
                         </div>
                     }
                     {this.state.operatorsListOpen &&
-                        <div className="operatorsListContainer">
-                            <div className='operatorsListContainer-wrap'>
-                                <div>
-                                    {this.renderOperatorsList()}
-                                </div>
-                                <div>
-                                    <button onClick={this.hideOperatorsList} className='active'>Отменить выбор оператора</button>
-                                </div>
-                            </div>
-                        </div>
+                       <OperatorsList
+                       close={this.hideOperatorsList}
+                       chooseOperator={this.assignOperator}
+                       />
                     }
                 </div>
             )
