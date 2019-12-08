@@ -198,10 +198,13 @@ class NewOperatorRegistration extends React.PureComponent {
                         <span>{this.state.passwordConfirm.errorMessage}</span>
                     </div>
                     <div>
-                        {(formValid && <button onClick={formValid ? this.registrate : null}
+                        <button onClick={formValid ? this.registrate : null}
                             className={formValid ? 'active' : 'disabled'}>
-                            Зарегистрировать
-                </button>)}
+                            {this.props.operator ?
+                            'Сохранить '
+                            :'Зарегистрировать'
+    }
+                </button>
                     </div>
                     </div>
                 </div>

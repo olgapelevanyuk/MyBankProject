@@ -162,6 +162,17 @@
       "login": "we",
       "type": "operator",
       "id": 19
+    },
+    {
+      "surname": "retet",
+      "firstName": "ertertert",
+      "lastName": "erterer",
+      "eMail": "",
+      "phone": "",
+      "password": "ertert",
+      "login": "ertertert",
+      "type": "operator",
+      "id": 20
     }
   ],
   "applications": [
