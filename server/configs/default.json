@@ -1,0 +1,48 @@
+{
+  "app": {
+    "port": 3000,
+    "responseHeaders": [
+      {
+        "name": "Access-Control-Allow-Origin",
+        "value": "*"
+      },
+      {
+        "name": "Access-Control-Allow-Headers",
+        "value": "Origin, X-Requested-With, Content-Type, Accept"
+      }
+    ],
+    "response": {
+      "statuses": {
+        "BAD_REQUEST": 400,
+        "INTERNAL_SERVER_ERROR": 500,
+        "NO_CONTENT": 204
+      },
+      "messages": {
+        "common": {
+          "INVALID_PARAMS": "invalid params"
+        },
+        "Application": {
+          "DB_READING_ERROR": "error when reading users from db"
+        },
+        "User": {
+          "DB_READING_ERROR": "error when reading applications from db"
+        }
+      }
+    }
+  },
+  "databases": {
+    "MongoDB": {
+      "host": "localhost",
+      "port": "27017",
+      "dbName": "sberbank"
+    }
+  },
+  "logMessages": {
+    "CONNECTION_TO_DB_FAILED": "Connection to MongoDB failed!",
+    "CONNECTION_TO_DB_CREATED": "Connection successfully created!",
+    "CREATING_CONNECTION_TO_DB": "Creating connection to MongoDB...",
+    "SUCCESSFULLY_STARTED": "Successfully started on port",
+    "SUCCESSFULLY_SAVED_TO_DB": "Sucecessfully saved to DB",
+    "CANT_SAVE_TO_DB": "Cant save to db"
+  }
+}

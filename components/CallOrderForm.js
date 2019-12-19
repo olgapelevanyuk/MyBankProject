@@ -1,14 +1,14 @@
 import React from 'react';
-import '../components/CallOrderForm.css';
-import { postData } from '../utils/utils';
 import { connect } from 'react-redux';
+import { postData } from '../utils/utils';
 import { acAddApplication } from '../constants/actionTypes';
+import '../components/CallOrderForm.css';
 
 class CallOrderForm extends React.PureComponent {
 
     initialState = {
         opened: false,
-        
+
         surname : {value: '', errorMessage: ''},
         firstName: {value: '', errorMessage: ''},
       eMail : {value: '', errorMessage: ''},
@@ -17,8 +17,8 @@ class CallOrderForm extends React.PureComponent {
     }
 
     state = {...this.initialState}
-       
-openForm = () =>{ 
+
+openForm = () =>{
     this.setState({
         opened: true,
     })
@@ -42,7 +42,7 @@ closeForm = () => {
         this.setState({...this.state,
           surname: newState});
     }
-  
+
     validateFirstName = e => {
       const value = e.target.value.trim();
       const newState = {value: value};
@@ -67,7 +67,7 @@ closeForm = () => {
   validateEMail = e => {
     const value = e.target.value.trim();
     let regExp = /^\S+?@[A-Za-z]+?\.[A-Za-z]+?$/;
-    
+
     const newState = {value: value};
     if(!value.match(regExp)) {
       newState.errorMessage = 'Введите e-mail в формате myemail@mail.com';
@@ -78,11 +78,11 @@ closeForm = () => {
     this.setState({...this.state,
       eMail: newState});
 }
-  
+
 validatePhone = e => {
     const value = e.target.value.trim();
     let regExp = /^\+375(29|44|33|25)\d\d\d\d\d\d\d$/;
-    
+
     const newState = {value: value};
     if(!value.match(regExp)) {
       newState.errorMessage = 'Введите номер телефона в формате +375ххххххххх';
@@ -95,7 +95,7 @@ validatePhone = e => {
 }
 
 orderCall = async () => {
-    
+
     const newAppl = {
         clientSurname: this.state.surname.value,
         clientFirstName : this.state.firstName.value,
@@ -119,13 +119,13 @@ orderCall = async () => {
     render () {
         const stateKeys = ['surname', 'firstName', 'eMail', 'phone'];
     const formValid = stateKeys.every(key => {
-        return this.state[key].value.length && 
+        return this.state[key].value.length &&
         !this.state[key].errorMessage.length
     });
 
     return(
         <div>
-        {(!this.state.opened && 
+        {(!this.state.opened &&
         <div onClick={this.openForm}  className="container">
             Заказать Звонок
         </div>) ||
@@ -167,7 +167,7 @@ orderCall = async () => {
 
 
           </div>
-            
+
         </div>)}
         </div>
 )

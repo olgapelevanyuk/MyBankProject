@@ -1,0 +1,18 @@
+{
+  "userTypes": [
+    {
+      "name": "operator"
+    },
+    {
+      "name": "admin"
+    },
+    {
+      "name": "user"
+    }
+  ],
+  "applicationTypes": [
+    {
+      "name": "callOrder"
+    }
+  ]
+}
