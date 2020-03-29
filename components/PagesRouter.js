@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import '../App.css'
-import Page_Start from '../pages/Page_Start';
-import Page_Depos from '../pages/Page_Depos';
-import Page_Cred from '../pages/Page_Cred';
-import Page_kard from '../pages/Page_kard';
-import Page_Registration from "../pages/Page_Registartion";
-import Page_login from "../pages/Page_Login";
-import Page_About from "../pages/Page_About";
+import Page_Start from '../Pages/Page_Start';
+import Page_Depos from '../Pages/Page_Depos';
+import Page_Cred from '../Pages/Page_Cred';
+import Page_kard from '../Pages/Page_kard';
+import Page_Registration from "../Pages/Page_Registartion";
+import Page_login from "../Pages/Page_Login";
+import Page_About from "../Pages/Page_About";
 import ApplicationList from '../components/ApplicationList';
 import Application from '../components/Application';
 class PagesRouter extends React.Component {
