@@ -1,8 +1,9 @@
-import React from 'react';
-import './Product.css';
+import React from "react";
+import { NavLink } from "react-router-dom";
+import "./Product.css";
 
 export default class Product extends React.PureComponent {
-    /*{
+  /*{
         title: 'Visa Platinum PayWave',
         descr: 'Карта, которая предоставляет доступ держателю в Мир привилегий ',
         image: '../images/card3.png',
@@ -17,38 +18,48 @@ export default class Product extends React.PureComponent {
         ]
     }*/
 
-    render(){
-        let {props: {data}} = this;
+  render() {
+    let {
+      props: { data, closeProduct },
+    } = this;
 
-        let oppotunities = data.fullInfo.map((item, idx) => {
-            return (
-                <li key={idx}>{item}</li>
-            )
-        })
+    console.log(this.props);
 
-        return(
-            <div className='ProductWrap'>
+    let oppotunities = data.fullInfo.map((item, idx) => {
+      return <li key={idx}>{item}</li>;
+    });
 
-                <div className='Product'>
-                    <div className='Product-image'>
-                        <img src={data.image} />
-                    </div>
-                    <div className='Product-descr'>
-                        <h2>{data.title}</h2>
-                        <div className='descr'>{data.descr}</div>
-                        <div><span className='Product-span'>Обслуживание: </span>{data.term}</div>
-                        <div><span className='Product-span'>Сервис: </span>{data.rate}, {data.min}</div>
-
-                        <div><span className='Product-span'>Основные возможности: </span> <br/>
-                            <ul>{oppotunities}</ul>
-                        </div>
-
-                    </div>
-                </div>
-                <div className='backButton'>
-                    Вернуться к списку карт
-                </div>
+    return (
+      <div className="ProductWrap">
+        <div className="Product">
+          <div className="Product-image">
+            <img src={data.image} />
+          </div>
+          <div className="Product-descr">
+            <h2>{data.title}</h2>
+            <div className="descr">{data.descr}</div>
+            <div>
+              <span className="Product-span">Обслуживание: </span>
+              {data.term}
             </div>
-        )
-    }
+            <div>
+              <span className="Product-span">Сервис: </span>
+              {data.rate}, {data.min}
+            </div>
+
+            <div>
+              <span className="Product-span">Основные возможности: </span>{" "}
+              <br />
+              <ul>{oppotunities}</ul>
+            </div>
+          </div>
+        </div>
+        <NavLink to="/kard">
+          <div onClick={closeProduct} className="backButton">
+            Вернуться к списку карт
+          </div>
+        </NavLink>
+      </div>
+    );
+  }
 }

@@ -6,6 +6,7 @@
 }
 
 .depos-Wrap {
+    position: relative;
     margin: 20px auto;
     width: 80%;
     display: flex;
@@ -74,4 +75,10 @@
     background-color: #11bf6a;
     border: 1px solid #11bf6a;
     cursor: pointer
+}
+
+.order-button {
+    left: 380px;
+    position: absolute;
+    bottom: 40px;
 }

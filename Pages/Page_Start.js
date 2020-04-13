@@ -12,7 +12,7 @@ class Page_Start extends React.PureComponent {
                     <div className='tableDescr'>Курсы валют:</div>
                     <table>
                         <tbody>
-                            
+
                         <tr>
                             <th></th>
                             <th>

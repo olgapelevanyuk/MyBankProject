@@ -1,26 +1,27 @@
-import React from "react"
-import { connect } from "react-redux"
-import { deleteData, postData, patchData, getData } from "../utils/utils"
+import React from "react";
+import { connect } from "react-redux";
+import { deleteData, postData, patchData, getData } from "../utils/utils";
 import {
   USERS_LOADING,
   USERS_LOADED,
   acAddUser,
-  acSetCurrentUser
-} from "../constants/actionTypes"
-import { NavLink } from "react-router-dom"
-import { withRouter } from "react-router-dom"
-import "./Page_Registration.css"
+  acSetCurrentUser,
+} from "../constants/actionTypes";
+import { NavLink } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import "./Page_Registration.css";
 class Page_Registration extends React.PureComponent {
   async componentDidMount() {
-    console.log(USERS_LOADING)
+    console.log(USERS_LOADING);
     this.props.dispatch({
-      type: USERS_LOADING
-    })
-    let usersList = await getData("users")
+      type: USERS_LOADING,
+    });
+    let usersList = await getData("users");
+    console.log(usersList);
     this.props.dispatch({
       type: USERS_LOADED,
-      data: usersList
-    })
+      data: usersList,
+    });
   }
 
   state = {
@@ -31,132 +32,132 @@ class Page_Registration extends React.PureComponent {
     phone: { value: "", errorMessage: "" },
     login: { value: "", errorMessage: "" },
     password: { value: "", errorMessage: "" },
-    passwordConfirm: { value: "", errorMessage: "" }
-  }
+    passwordConfirm: { value: "", errorMessage: "" },
+  };
 
   validateSurname = (e) => {
-    const value = e.target.value.trim()
-    const newState = { value: value }
+    const value = e.target.value.trim();
+    const newState = { value: value };
     if (!value.length) {
-      newState.errorMessage = "Поле не может быть пустым"
+      newState.errorMessage = "Поле не может быть пустым";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      surname: newState
-    })
-  }
+      surname: newState,
+    });
+  };
 
   validateFirstName = (e) => {
-    const value = e.target.value.trim()
-    const newState = { value: value }
+    const value = e.target.value.trim();
+    const newState = { value: value };
     if (!value.length) {
-      newState.errorMessage = "Поле не может быть пустым"
+      newState.errorMessage = "Поле не может быть пустым";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      firstName: newState
-    })
-  }
+      firstName: newState,
+    });
+  };
 
   validateLastName = (e) => {
-    const value = e.target.value.trim()
-    const newState = { value: value }
+    const value = e.target.value.trim();
+    const newState = { value: value };
     if (!value.length) {
-      newState.errorMessage = "Поле не может быть пустым"
+      newState.errorMessage = "Поле не может быть пустым";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      lastName: newState
-    })
-  }
+      lastName: newState,
+    });
+  };
 
   validateEMail = (e) => {
-    const value = e.target.value.trim()
-    let regExp = /^\S+?@[A-Za-z]+?\.[A-Za-z]+?$/
+    const value = e.target.value.trim();
+    let regExp = /^\S+?@[A-Za-z]+?\.[A-Za-z]+?$/;
 
-    const newState = { value: value }
+    const newState = { value: value };
     if (!value.match(regExp)) {
-      newState.errorMessage = "Введите e-mail в формате myemail@mail.com"
+      newState.errorMessage = "Введите e-mail в формате myemail@mail.com";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      eMail: newState
-    })
-  }
+      eMail: newState,
+    });
+  };
 
   validatePhone = (e) => {
-    const value = e.target.value.trim()
-    let regExp = /^\+375(29|44|33|25)\d\d\d\d\d\d\d$/
+    const value = e.target.value.trim();
+    let regExp = /^\+375(29|44|33|25)\d\d\d\d\d\d\d$/;
 
-    const newState = { value: value }
+    const newState = { value: value };
     if (!value.match(regExp)) {
-      newState.errorMessage = "Введите номер телефона в формате +375ххххххххх"
+      newState.errorMessage = "Введите номер телефона в формате +375ххххххххх";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      phone: newState
-    })
-  }
+      phone: newState,
+    });
+  };
 
   validatePassword = (e) => {
-    const value = e.target.value.trim()
-    const newState = { value: value }
+    const value = e.target.value.trim();
+    const newState = { value: value };
     if (value.length < 5) {
-      newState.errorMessage = "Пароль слишком короткий (минимум 5 символов)"
+      newState.errorMessage = "Пароль слишком короткий (минимум 5 символов)";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
       password: newState,
-      passwordConfirm: { value: "", errorMessage: "" }
-    })
-  }
+      passwordConfirm: { value: "", errorMessage: "" },
+    });
+  };
 
   validatePasswordConfirm = (e, withValidate = false) => {
-    const value = e.target.value.trim()
-    const newState = { value: value }
+    const value = e.target.value.trim();
+    const newState = { value: value };
     if (withValidate && value !== this.state.password.value) {
-      newState.errorMessage = "Введенные пароли не совпадают"
+      newState.errorMessage = "Введенные пароли не совпадают";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      passwordConfirm: newState
-    })
-  }
+      passwordConfirm: newState,
+    });
+  };
 
   validateLogin = (e) => {
-    const value = e.target.value.trim()
-    const { users } = this.props
-    const newState = { value: value }
-    const loginIsValid = users.list.every((user) => value !== user.login)
+    const value = e.target.value.trim();
+    const { users } = this.props;
+    const newState = { value: value };
+    const loginIsValid = users.list.every((user) => value !== user.login);
     if (!loginIsValid) {
-      newState.errorMessage = "Логин занят другим пользователем"
+      newState.errorMessage = "Логин занят другим пользователем";
     } else if (!value.length) {
-      newState.errorMessage = "Поле не может быть пустым"
+      newState.errorMessage = "Поле не может быть пустым";
     } else {
-      newState.errorMessage = ""
+      newState.errorMessage = "";
     }
     this.setState({
       ...this.state,
-      login: newState
-    })
-  }
+      login: newState,
+    });
+  };
 
   registrate = async () => {
-    const state = this.state
+    const state = this.state;
     const newUser = {
       surname: state.surname.value,
       firstName: state.firstName.value,
@@ -165,23 +166,25 @@ class Page_Registration extends React.PureComponent {
       phone: state.phone.value,
       password: state.password.value,
       login: state.login.value,
-      type: "user"
-    }
-    let user = await postData("users", newUser)
-    console.log(user, "ADD_USER REGISTRATE")
-    this.props.dispatch(acAddUser(user))
-    this.props.dispatch(acSetCurrentUser(user))
-    alert("Вы зарегистрированы")
-    this.props.history.push("/")
-  }
+      type: "user",
+    };
+    let user = await postData("users", newUser);
+    console.log(user, "ADD_USER REGISTRATE");
+    this.props.dispatch(acAddUser(user));
+    this.props.dispatch(acSetCurrentUser(user));
+    alert("Вы зарегистрированы");
+    this.props.history.push("/");
+  };
 
   render() {
-    const stateKeys = Object.keys(this.state)
+    const stateKeys = Object.keys(this.state);
     const formValid =
       stateKeys.every(
         (key) =>
           this.state[key].value.length && !this.state[key].errorMessage.length
-      ) && this.state.password.value === this.state.passwordConfirm.value
+      ) && this.state.password.value === this.state.passwordConfirm.value;
+
+    console.log(this.props.users.loading);
 
     return (
       (this.props.users.loading && <div>Идет загрузка</div>) || (
@@ -272,12 +275,12 @@ class Page_Registration extends React.PureComponent {
           </div>
         </div>
       )
-    )
+    );
   }
 }
 
 export default withRouter(
   connect((state) => ({
-    users: state.users
+    users: state.users,
   }))(Page_Registration)
-)
+);
