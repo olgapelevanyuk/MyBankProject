@@ -3,7 +3,7 @@ export const getData = async (path) => {
   let data = await fetch(`http://localhost:3000/${path}`);
   data = await data.json();
   console.log("before");
-  // await new Promise((resolve) => setTimeout(resolve, 1500));
+  await new Promise((resolve) => setTimeout(resolve, 1500));
   console.log("after");
   return data;
 };

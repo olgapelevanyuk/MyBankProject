@@ -132,7 +132,7 @@ orderCall = async () => {
         (<div className='callFormWrapper-container'>
           <div className='callFormWrapper'>
 
-            <div className='closeFormButton' onClick={this.closeForm}>X</div>
+            <div className='closeFormButton' onClick={this.closeForm}>×</div>
 
                 <div>
                 <label>Фамилия</label>

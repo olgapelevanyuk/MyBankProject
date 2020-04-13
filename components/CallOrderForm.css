@@ -62,6 +62,7 @@
 }
 .callFormWrapper input,
 textarea {
+  font-size: 16px;
   border: 1px solid black;
   border-radius: 4px;
   padding: 5px 10px;
@@ -93,7 +94,7 @@ textarea {
   padding: 10px 15px;
   margin-top: 20px;
 }
-.callFormWrapper .closeFormButton {
+/* .callFormWrapper .closeFormButton {
   position: absolute;
   width: 30px;
   height: 30px;
@@ -102,6 +103,22 @@ textarea {
   color: white;
   font-weight: bold;
   background-color: red;
+  line-height: 30px;
+  border-radius: 50%;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+} */
+
+.closeFormButton {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 5px;
+  right: 5px;
+  color: black;
+  font-weight: bold;
+  /* background-color: red; */
   line-height: 30px;
   border-radius: 50%;
   text-align: center;
