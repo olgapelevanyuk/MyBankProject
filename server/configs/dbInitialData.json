@@ -12,7 +12,34 @@
   ],
   "applicationTypes": [
     {
-      "name": "callOrder"
+      "name": "other"
+    },
+    {
+      "name": "functional"
+    },
+    {
+      "name": "technical"
+    },
+    {
+      "name": "information"
+    }
+  ],
+  "errorRates": [
+    {
+      "errorName": "other",
+      "rate": 0.3
+    },
+    {
+      "errorName": "functional",
+      "rate": 0.4
+    },
+    {
+      "errorName": "technical",
+      "rate": 0.5
+    },
+    {
+      "errorName": "information",
+      "rate": 0.2
     }
   ]
 }

@@ -23,7 +23,6 @@ export default class Product extends React.PureComponent {
       props: { data, closeProduct },
     } = this;
 
-    console.log(this.props);
 
     let oppotunities = data.fullInfo.map((item, idx) => {
       return <li key={idx}>{item}</li>;

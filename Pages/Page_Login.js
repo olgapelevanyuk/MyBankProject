@@ -11,12 +11,10 @@ import { NavLink } from "react-router-dom";
 import "./Page_Registration.css";
 class Page_Login extends React.PureComponent {
   async componentDidMount() {
-    console.log(USERS_LOADING);
     this.props.dispatch({
       type: USERS_LOADING,
     });
     let usersList = await getData("users");
-    console.log(usersList);
     this.props.dispatch({
       type: USERS_LOADED,
       data: usersList,

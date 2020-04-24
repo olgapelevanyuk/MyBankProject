@@ -12,12 +12,10 @@ import { withRouter } from "react-router-dom";
 import "./Page_Registration.css";
 class Page_Registration extends React.PureComponent {
   async componentDidMount() {
-    console.log(USERS_LOADING);
     this.props.dispatch({
       type: USERS_LOADING,
     });
     let usersList = await getData("users");
-    console.log(usersList);
     this.props.dispatch({
       type: USERS_LOADED,
       data: usersList,
@@ -169,7 +167,6 @@ class Page_Registration extends React.PureComponent {
       type: "user",
     };
     let user = await postData("users", newUser);
-    console.log(user, "ADD_USER REGISTRATE");
     this.props.dispatch(acAddUser(user));
     this.props.dispatch(acSetCurrentUser(user));
     alert("Вы зарегистрированы");
@@ -183,8 +180,6 @@ class Page_Registration extends React.PureComponent {
         (key) =>
           this.state[key].value.length && !this.state[key].errorMessage.length
       ) && this.state.password.value === this.state.passwordConfirm.value;
-
-    console.log(this.props.users.loading);
 
     return (
       (this.props.users.loading && <div>Идет загрузка</div>) || (

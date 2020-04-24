@@ -1,84 +1,93 @@
 .Page_Depos .banner {
-    height: 450px;
-    font-size: 64px;
-    background: 50% no-repeat;
-    background-size: cover;
+  height: 450px;
+  font-size: 64px;
+  background: 50% no-repeat;
+  background-size: cover;
 }
 
 .depos-Wrap {
-    position: relative;
-    margin: 20px auto;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    border-radius: 20px;
-    padding: 20px 40px 20px 20px;
-    box-shadow: 0 0 6px 4px rgba(0,0,0,.1);
+  position: relative;
+  margin: 20px auto;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  padding: 20px 40px 20px 20px;
+  box-shadow: 0 0 6px 4px rgba(0, 0, 0, 0.1);
 }
-.depos-image{
-    width: 30%;
-    margin-right: 20px;
+.depos-image {
+  width: 30%;
+  margin-right: 20px;
 }
 .depos-info {
-    width: 70%;
+  width: 70%;
 }
 .depos-image img {
-    width: 100%;
+  width: 100%;
 }
 .depos-title {
-    margin: 5px 0 8px 0;
+  margin: 5px 0 8px 0;
 }
 .depos-descr {
-    margin-bottom: 24px;
+  margin-bottom: 24px;
 }
 .depos-adv {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
-.depos-adv-about{
-    font-size: 12px;
-    font-weight: 400;
-    line-height: 1.33;
-    color: rgba(27,39,51,.7);
-    margin-bottom: 8px;
+.depos-adv-about {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.33;
+  color: rgba(27, 39, 51, 0.7);
+  margin-bottom: 8px;
 }
 .depos-adv-text {
-    font-size: 24px;
-    font-weight: 100;
-    line-height: 1.1;
-    letter-spacing: normal;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 1.1;
+  letter-spacing: normal;
 }
 .prod-buttons {
-    display: flex;
-    margin-top: 20px;
-    justify-content: flex-end;
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-end;
 }
 .fullInfo {
-    padding: 9px 20px;
-    color: rgba(27, 39, 51, 0.9);
-    border-radius: 10px;
-    font-size: 16px;
-    border: 1px solid rgba(27, 39, 51, 0.9);
-    margin-right: 20px;
-    cursor: pointer;
+  padding: 9px 20px;
+  color: rgba(27, 39, 51, 0.9);
+  border-radius: 10px;
+  font-size: 16px;
+  border: 1px solid rgba(27, 39, 51, 0.9);
+  margin-right: 20px;
+  cursor: pointer;
 }
 .fullInfo:hover {
-    background-color: orange;
-    color: white;
-    border: 1px solid orange;
+  background-color: orange;
+  color: white;
+  border: 1px solid orange;
 }
-.orderCall{
-    padding: 9px 20px;
-    color: #fff;
-    border-radius: 10px;
-    font-size: 16px;
-    background-color: #11bf6a;
-    border: 1px solid #11bf6a;
-    cursor: pointer
+.orderCall {
+  padding: 9px 20px;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 16px;
+  background-color: #11bf6a;
+  border: 1px solid #11bf6a;
+  cursor: pointer;
 }
 
 .order-button {
-    left: 380px;
-    position: absolute;
-    bottom: 40px;
+  left: 380px;
+  position: absolute;
+  bottom: 40px;
+}
+
+.deposit-card:hover .order-deposit {
+  visibility: unset;
+}
+
+.order-deposit {
+  margin-top: 20px;
+  visibility: hidden;
 }

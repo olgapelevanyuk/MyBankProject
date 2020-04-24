@@ -35,6 +35,7 @@
   border: 1px solid orange;
 }
 .callFormWrapper-container {
+  z-index: 1;
   position: fixed;
   bottom: 0;
   top: 0;
@@ -124,4 +125,37 @@ textarea {
   text-align: center;
   font-size: 30px;
   cursor: pointer;
+}
+
+.order-call {
+  background: white;
+}
+
+.err-label {
+  min-width: unset !important;
+}
+
+.err-type-radio {
+  min-width: unset !important;
+}
+
+.err-type-options {
+  padding-top: 0 !important;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.cancel-btn {
+  margin-left: 10px;
+  background-color: orange;
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  margin-top: 20px;
 }

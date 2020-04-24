@@ -1,49 +1,57 @@
 .applicationsContainer {
-    margin: auto;
+  margin: auto;
 }
 
 .applListTable {
   margin: auto;
-  border-collapse: collapse; 
-  width: 80%; 
+  border-collapse: collapse;
+  width: 80%;
+  margin-bottom: 50px;
 }
 
-.applListTable td, .applListTable th {
-    border: 1px solid black;
-    padding: 10px;
+.applListTable td,
+.applListTable th {
+  border: 1px solid black;
+  padding: 10px;
 }
 
 .applicationsContainer h2 {
-    text-align: center;
+  text-align: center;
 }
 
 .applListMainContainer button {
-    white-space: nowrap;
-    border-radius: 3px;
-    margin-top: 3px;
-    margin-bottom: 3px;
-    cursor: pointer;
+  white-space: nowrap;
+  border-radius: 3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+  cursor: pointer;
 }
 
 .applListMainContainer button:hover {
-    background-color: blue;
-    color: whitesmoke;
+  background-color: blue;
+  color: whitesmoke;
 }
 
-.applId, .applDate, .applTime {
-    width: 20px;
+.applId,
+.applDate,
+.applTime {
+  width: 20px;
 }
 
 .addNewOperButton {
-    margin: 10px;
+  margin: 10px;
 }
 
 .addNewOperButton button {
-    display: block;
-    margin: auto;
+  display: block;
+  margin: auto;
 }
 
 .addNewOperButton button:hover {
-    background-color: blue;
-    color: whitesmoke;
+  background-color: blue;
+  color: whitesmoke;
+}
+
+.application-control-btn {
+  margin-bottom: 10px;
 }

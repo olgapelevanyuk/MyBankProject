@@ -1,6 +1,26 @@
 import React from "react";
+import "./Page_Depos.css";
+import { connect } from "react-redux";
 
-export default class Page_Cred extends React.PureComponent {
+import {
+  USERS_LOADING,
+  USERS_LOADED,
+  acAddApplication,
+} from "../constants/actionTypes";
+import { getData, postData } from "../utils/utils";
+import { withRouter } from "react-router-dom";
+
+class Page_Cred extends React.PureComponent {
+  async componentDidMount() {
+    this.props.dispatch({
+      type: USERS_LOADING,
+    });
+    let usersList = await getData("users");
+    this.props.dispatch({
+      type: USERS_LOADED,
+      data: usersList,
+    });
+  }
   static defaultProps = {
     depos: [
       {
@@ -27,14 +47,33 @@ export default class Page_Cred extends React.PureComponent {
       },
     ],
   };
+
+  orderDepos = async () => {
+    const newAppl = {
+      clientSurname: this.props.users.currentUser.userProfile.surname,
+      clientFirstName: this.props.users.currentUser.userProfile.firstName,
+      clientPatronymic: this.props.users.currentUser.userProfile.lastName,
+      clientEMail: this.props.users.currentUser.userProfile.eMail,
+      clientPhone: this.props.users.currentUser.userProfile.phone,
+      clientComment: "",
+      type: "other",
+      status: 1, // 1- принята банком,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    };
+    let application = await postData("applications", newAppl);
+    this.props.dispatch(acAddApplication(application));
+    alert("Заявка поступила к рассмотрению");
+  };
+
   render() {
     let {
-      props: { depos },
+      props: { depos, users },
     } = this;
 
     let deposits = depos.map((item, idx) => {
       return (
-        <div className="depos-Wrap" key={idx}>
+        <div className="depos-Wrap deposit-card" key={idx}>
           <div className="depos-image">
             <img src={item.image} />
           </div>
@@ -57,7 +96,11 @@ export default class Page_Cred extends React.PureComponent {
               </div>
             </div>
           </div>
-          <div className="order-button o-button">Заказать</div>
+          {users.currentUser.userProfile ? (
+            <div onClick={this.orderDepos} className="order-deposit o-button">
+              Заказать
+            </div>
+          ) : null}
         </div>
       );
     });
@@ -73,3 +116,9 @@ export default class Page_Cred extends React.PureComponent {
     );
   }
 }
+
+export default withRouter(
+  connect((state) => ({
+    users: state.users,
+  }))(Page_Cred)
+);

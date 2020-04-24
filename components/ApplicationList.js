@@ -1,68 +1,69 @@
-import React from "react"
-import { connect } from "react-redux"
+import React from "react";
+import { connect } from "react-redux";
 import {
   acApplicationsLoaded,
   APPLICATIONS_LOADING,
   acUpdateApplication,
   acSetCurrentApplication,
   USERS_LOADING,
-  USERS_LOADED
-} from "../constants/actionTypes"
-import { withRouter } from "react-router-dom"
-import { getData, patchData } from "../utils/utils"
-import "../components/ApplicationList.css"
-import NewOperatorRegistration from "./NewOperatorRegistration"
-import OperatorsList from "./OperatorsList"
-class ApplicationList extends React.PureComponent {
+  USERS_LOADED,
+} from "../constants/actionTypes";
+import { withRouter } from "react-router-dom";
+import { getData, patchData } from "../utils/utils";
+import "../components/ApplicationList.css";
+import NewOperatorRegistration from "./NewOperatorRegistration";
+import OperatorsList from "./OperatorsList";
+class ApplicationList extends React.Component {
   async componentDidMount() {
     this.props.dispatch({
-      type: USERS_LOADING
-    })
-    let usersList = await getData("users")
+      type: USERS_LOADING,
+    });
+    let usersList = await getData("users");
     this.props.dispatch({
       type: USERS_LOADED,
-      data: usersList
-    })
+      data: usersList,
+    });
     this.props.dispatch({
-      type: APPLICATIONS_LOADING
-    })
-    let data = await getData("applications")
-    this.props.dispatch(acApplicationsLoaded(data))
+      type: APPLICATIONS_LOADING,
+    });
+    let data = await getData("applications");
+    this.props.dispatch(acApplicationsLoaded(data));
   }
 
   initialState = {
     currentApplication: { id: null },
-    operatorsListOpen: false
-  }
+    operatorsListOpen: false,
+  };
 
-  state = { ...this.initialState }
+  state = { ...this.initialState };
 
   changeApplStatus = async (appl, status, user) => {
     const changes = {
       status: status,
-      operator: user
-    }
-    let application = await patchData("applications/" + appl, changes)
-    this.props.dispatch(acUpdateApplication(application))
-  }
+      operator: user,
+    };
+    let application = await patchData("applications/" + appl, changes);
+    this.props.dispatch(acUpdateApplication(application));
+  };
 
   assignOperator = async (operator) => {
+    console.log("application list");
     const changes = {
       status: 2,
-      operator: operator
-    }
+      operator: operator._id,
+    };
     let application = await patchData(
       "applications/" + this.state.currentApplication.id,
       changes
-    )
-    this.props.dispatch(acUpdateApplication(application))
-    this.hideOperatorsList()
-  }
+    );
+    this.props.dispatch(acUpdateApplication(application));
+    this.hideOperatorsList();
+  };
 
   renderClientApplications = () => {
-    const { list } = this.props.applications
+    const { list } = this.props.applications;
     if (!list.length) {
-      return <div>Заявок нет</div>
+      return <div>Заявок нет</div>;
     } else {
       return list.map((appl) => (
         <tr
@@ -70,26 +71,40 @@ class ApplicationList extends React.PureComponent {
           key={appl.id}
           className="applListItem"
         >
-          <td className={"applId"}>{appl.id}</td>
+          <td className={"applId"}>{appl.countNum}</td>
           <td className={"applDate"}>{appl.date}</td>
           <td className={"applTime"}>{appl.time}</td>
-          <td>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientLastName}`}</td>
-          <td>{appl.topic}</td>
+          <td>{`${appl.clientSurname} ${appl.clientFirstName} ${appl.clientPatronymic}`}</td>
           <td>
-            {appl.status === 1 && "Заявка получена банком"}
-            {appl.status === 2 && "Взята в работу"}
+            {appl.type.name === "technical" && "Техническая"}
+            {appl.type.name === "functional" && "Функциональная"}
+            {appl.type.name === "information" && "Информационная"}
+            {appl.type.name === "other" && "Другое"}
+          </td>
+          <td>
+            {appl.operator && appl.operator.surname
+              ? `${appl.operator.surname} ${appl.operator.firstName} ${appl.operator.lastName}`
+              : "Не назначен"}
+          </td>
+          <td>
+            {appl.status === 1 && "Открыта"}
+            {appl.status === 2 && "В работе"}
             {appl.status === 3 && "Исполнена"}
           </td>
 
           <td>
-            <button onClick={this.showApplicationFullInfo.bind(this, appl._id)}>
-              Просмотреть полную информацию
-            </button>
+            <div
+              className="o-button application-control-btn"
+              onClick={this.showApplicationFullInfo.bind(this, appl._id)}
+            >
+              Полная информация
+            </div>
 
             {appl.status === 1 &&
               this.props.users.currentUser.userProfile &&
               this.props.users.currentUser.userProfile.type === "operator" && (
-                <button
+                <div
+                  className="o-button application-control-btn"
                   onClick={this.changeApplStatus.bind(
                     this,
                     appl._id,
@@ -98,53 +113,59 @@ class ApplicationList extends React.PureComponent {
                   )}
                 >
                   Взять в работу
-                </button>
+                </div>
               )}
             {appl.status === 1 &&
               this.props.users.currentUser.userProfile &&
               this.props.users.currentUser.userProfile.type === "admin" && (
-                <button onClick={this.showOperatorsList.bind(this, appl.id)}>
+                <div
+                  className="o-button application-control-btn"
+                  onClick={this.showOperatorsList.bind(this, appl._id)}
+                >
                   Передать в работу
-                </button>
+                </div>
               )}
-
-            <button
-              onClick={this.changeApplStatus.bind(
-                this,
-                appl._id,
-                3,
-                this.props.users.currentUser.userProfile
+            {appl.status === 2 &&
+              this.props.users.currentUser.userProfile &&
+              this.props.users.currentUser.userProfile.type === "operator" && (
+                <div
+                  className="o-button application-control-btn"
+                  onClick={this.changeApplStatus.bind(
+                    this,
+                    appl._id,
+                    3,
+                    this.props.users.currentUser.userProfile
+                  )}
+                >
+                  Пометить как исполненную
+                </div>
               )}
-            >
-              Пометить как исполненную
-            </button>
           </td>
         </tr>
-      ))
+      ));
     }
-  }
+  };
 
   showApplicationFullInfo = async (_id) => {
-    let application = await getData("applications/" + _id)
-    this.props.dispatch(acUpdateApplication(application))
-    this.props.dispatch(acSetCurrentApplication(application))
-    this.props.history.push(`applications/${_id}`)
-  }
+    let application = await getData("applications/" + _id);
+    this.props.dispatch(acUpdateApplication(application));
+    this.props.dispatch(acSetCurrentApplication(application));
+    this.props.history.push(`applications/${_id}`);
+  };
 
   hideOperatorsList = () => {
     this.setState({
       currentApplication: { id: null },
-      operatorsListOpen: false
-    })
-  }
+      operatorsListOpen: false,
+    });
+  };
 
   showOperatorsList = (applId) => {
-    console.log(applId)
     this.setState({
       currentApplication: { id: applId },
-      operatorsListOpen: true
-    })
-  }
+      operatorsListOpen: true,
+    });
+  };
 
   render() {
     return (
@@ -160,8 +181,9 @@ class ApplicationList extends React.PureComponent {
                   <th className={"applId"}>Номер</th>
                   <th className={"applDate"}>Дата</th>
                   <th className={"applTime"}>Время</th>
-                  <th>Содержание</th>
-                  <th>Тема</th>
+                  <th>Заявитель</th>
+                  <th>Тип ошибки</th>
+                  <th>Исполнитель</th>
                   <th>Статус</th>
                   <th>Действия</th>
                 </tr>
@@ -188,13 +210,13 @@ class ApplicationList extends React.PureComponent {
             )}
         </div>
       )
-    )
+    );
   }
 }
 
 export default withRouter(
   connect((state) => ({
     users: state.users,
-    applications: state.applications
+    applications: state.applications,
   }))(ApplicationList)
-)
+);
