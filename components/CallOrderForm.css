@@ -133,6 +133,7 @@ textarea {
 
 .err-label {
   min-width: unset !important;
+  margin-left: 10px;
 }
 
 .err-type-radio {
@@ -141,6 +142,7 @@ textarea {
 
 .err-type-options {
   padding-top: 0 !important;
+  margin-left: -15px;
 }
 
 .d-flex {

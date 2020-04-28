@@ -95,12 +95,12 @@ class Page_Cred extends React.PureComponent {
                 <div className="depos-adv-text">{item.min}</div>
               </div>
             </div>
+            {users.currentUser.userProfile ? (
+              <div onClick={this.orderDepos} className="order-deposit o-button">
+                Заказать
+              </div>
+            ) : null}
           </div>
-          {users.currentUser.userProfile ? (
-            <div onClick={this.orderDepos} className="order-deposit o-button">
-              Заказать
-            </div>
-          ) : null}
         </div>
       );
     });

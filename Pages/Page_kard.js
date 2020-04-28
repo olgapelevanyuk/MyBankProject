@@ -147,12 +147,12 @@ class Page_kard extends React.PureComponent {
                 Подробнее
               </div>
             </div>
+            {users.currentUser.userProfile ? (
+              <div onClick={this.orderDepos} className="order-deposit o-button">
+                Заказать
+              </div>
+            ) : null}
           </div>
-          {users.currentUser.userProfile ? (
-            <div onClick={this.orderDepos} className="order-deposit o-button">
-              Заказать
-            </div>
-          ) : null}
         </div>
       );
     });

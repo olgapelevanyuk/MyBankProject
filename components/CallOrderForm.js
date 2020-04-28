@@ -192,9 +192,6 @@ class CallOrderForm extends React.PureComponent {
                 <label>Тип ошибки</label>
                 <div className="err-type-options">
                   <div>
-                    <label for="informationErr" className="err-label">
-                      Информационная
-                    </label>
                     <input
                       type="radio"
                       name="errorType"
@@ -202,11 +199,11 @@ class CallOrderForm extends React.PureComponent {
                       id="informationErr"
                       className="err-type-radio"
                     />
+                    <label for="informationErr" className="err-label">
+                      Информационная
+                    </label>
                   </div>
                   <div>
-                    <label for="functionalErr" className="err-label">
-                      Функиональная
-                    </label>
                     <input
                       type="radio"
                       name="errorType"
@@ -214,11 +211,11 @@ class CallOrderForm extends React.PureComponent {
                       id="functionalErr"
                       className="err-type-radio"
                     />
+                    <label for="functionalErr" className="err-label">
+                      Функиональная
+                    </label>
                   </div>
                   <div>
-                    <label for="technicalErr" className="err-label">
-                      Техническая
-                    </label>
                     <input
                       type="radio"
                       name="errorType"
@@ -226,6 +223,9 @@ class CallOrderForm extends React.PureComponent {
                       id="technicalErr"
                       className="err-type-radio"
                     />
+                    <label for="technicalErr" className="err-label">
+                      Техническая
+                    </label>
                   </div>
                 </div>
                 <span>{this.state.errorType.errorMessage}</span>

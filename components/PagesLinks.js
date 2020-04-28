@@ -1,19 +1,20 @@
-import React from "react"
-import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
-import { NavLink } from "react-router-dom"
-import { acLogOut } from "../constants/actionTypes"
-import "./PagesLinks.css"
+import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import { acLogOut } from "../constants/actionTypes";
+import "./PagesLinks.css";
 
 class PagesLinks extends React.Component {
-  state = {}
+  state = {};
 
   logOut = () => {
-    this.props.dispatch(acLogOut())
-    this.props.history.push("/")
-  }
+    this.props.dispatch(acLogOut());
+    this.props.history.push("/");
+  };
 
   render() {
+    console.log(this.props.users.currentUser.userProfile);
     return (
       <div>
         <div className={"RegLoginNavLinks"}>
@@ -89,14 +90,35 @@ class PagesLinks extends React.Component {
                 Заявки
               </NavLink>
             )}
+          {this.props.users.currentUser.userProfile &&
+            (this.props.users.currentUser.userProfile.type === "admin" ||
+              this.props.users.currentUser.userProfile.type === "operator") && (
+              <NavLink
+                to="/profile"
+                className={"showMenu"}
+                activeClassName="ActivePageLink"
+              >
+                Персональная страница
+              </NavLink>
+            )}
+          {this.props.users.currentUser.userProfile &&
+            this.props.users.currentUser.userProfile.type === "user" && (
+              <NavLink
+                to="/userProfile"
+                className={"showMenu"}
+                activeClassName="ActivePageLink"
+              >
+                Персональная страница
+              </NavLink>
+            )}
         </div>
       </div>
-    )
+    );
   }
 }
 
 export default withRouter(
   connect((state) => ({
-    users: state.users
+    users: state.users,
   }))(PagesLinks)
-)
+);
